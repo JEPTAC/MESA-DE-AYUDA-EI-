@@ -2280,6 +2280,35 @@ body.create-mobile-compact{
   }
 }
 
+
+/* QA FINAL CORREO/LAYOUT */
+.mobile-drawer,.mobile-drawer-backdrop,.menu-backdrop{
+  display:none!important;visibility:hidden!important;pointer-events:none!important;width:0!important;height:0!important;opacity:0!important;overflow:hidden!important;
+}
+@media(min-width:881px){
+  #qaMobileMenuDrawer,#qaMobileMenuBackdrop,.mobile-drawer,.mobile-drawer-backdrop,.menu-backdrop{
+    display:none!important;visibility:hidden!important;pointer-events:none!important;
+  }
+}
+@media(max-width:880px){
+  .mobile-drawer,.mobile-drawer-backdrop,.menu-backdrop{
+    display:none!important;visibility:hidden!important;pointer-events:none!important;
+  }
+  #qaMobileMenuDrawer{
+    position:fixed!important;top:0!important;left:0!important;bottom:0!important;width:min(318px,86vw)!important;height:100dvh!important;
+    z-index:2147483600!important;transform:translateX(-110%)!important;background:#fff!important;color:#0b3b82!important;
+    border-radius:0 28px 28px 0!important;box-shadow:28px 0 70px rgba(3,22,45,.28)!important;
+    padding:18px 14px calc(18px + env(safe-area-inset-bottom))!important;overflow-y:auto!important;-webkit-overflow-scrolling:touch!important;
+    pointer-events:auto!important;touch-action:auto!important;
+  }
+  body.qa-menu-open #qaMobileMenuDrawer{transform:translateX(0)!important}
+  #qaMobileMenuBackdrop{
+    position:fixed!important;inset:0!important;z-index:2147483500!important;background:rgba(3,22,45,.38)!important;
+    opacity:0!important;visibility:hidden!important;pointer-events:none!important;
+  }
+  body.qa-menu-open #qaMobileMenuBackdrop{opacity:1!important;visibility:visible!important;pointer-events:auto!important}
+}
+
 </style>
 
   <!-- Iconos APP / iPhone / Navegador -->
@@ -6237,6 +6266,100 @@ window.addEventListener("DOMContentLoaded",()=>ensureMobileDrawerReal());
   window.qaOpenMobileMenu=qaOpen;
   window.qaCloseMobileMenu=qaClose;
 })();
+
+
+/* QA FINAL: correo al solicitante y limpieza de capas */
+function qaCleanResidualMobileLayers(){
+  document.querySelectorAll(".mobile-drawer,.mobile-drawer-backdrop,.menu-backdrop").forEach(el=>{
+    try{el.remove()}catch(e){el.style.display="none";el.style.pointerEvents="none";el.style.visibility="hidden";}
+  });
+}
+function qaNormalizeEmail(email){return String(email||"").trim().toLowerCase();}
+function qaValidEmail(email){return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(qaNormalizeEmail(email));}
+function qaTicketRequesterEmail(ticket){
+  const email=qaNormalizeEmail(ticket?.requesterEmail || ticket?.requester_email || ticket?.email || "");
+  return qaValidEmail(email)?email:"";
+}
+function qaCollectRequesterEmailFromForm(){
+  const form=document.getElementById("ticketForm");
+  if(!form)return "";
+  return qaNormalizeEmail(form.elements?.requesterEmail?.value || form.querySelector('[name="requesterEmail"]')?.value || "");
+}
+
+if(typeof submitTicket==="function"){
+  const submitTicketBeforeQaEmail=submitTicket;
+  submitTicket=async function(e){
+    const form=e?.target || document.getElementById("ticketForm");
+    const emailBefore=qaCollectRequesterEmailFromForm();
+    if(form?.elements?.requesterEmail)form.elements.requesterEmail.value=emailBefore;
+    return submitTicketBeforeQaEmail(e);
+  };
+}
+
+sendTicketEmailAutomatic=async function(t,type="created",silent=false){
+  if(type!=="created")return {ok:false,reason:"solo_creacion"};
+  const email=qaTicketRequesterEmail(t);
+  if(!email){
+    if(!silent)Swal.fire({title:"Sin correo del solicitante",text:"La solicitud no tiene un correo válido registrado.",confirmButtonColor:"#0d5bd2"});
+    return {ok:false,reason:"sin_correo_solicitante"};
+  }
+  if(!hasEmailConfig()){
+    if(!silent){
+      const cfg=await Swal.fire({title:"Comprobante automático no configurado",html:`<div class="wizard-summary"><p>Configura EmailJS una sola vez.</p></div>`,showCancelButton:true,confirmButtonText:"Configurar ahora",cancelButtonText:"Después",confirmButtonColor:"#0d5bd2"});
+      if(cfg.isConfirmed)await configureEmailService();
+    }
+    return {ok:false,reason:"sin_config"};
+  }
+  try{
+    await ensureEmailProvider();
+    const cfg=getEmailConfig();
+    const subject=ticketEmailSubject(t,"created");
+    const htmlMsg=ticketEmailHtml(t,"created");
+    const textMsg=ticketTextMessage(t,"created");
+    const params={
+      to_email:email, requester_email:email, user_email:email, email:email, reply_to:email,
+      from_name:t.requesterName||"Solicitante", to_name:t.requesterName||"Solicitante",
+      subject, ticket_code:t.code, requester_name:t.requesterName||"", requester_area:t.requesterArea||"",
+      ticket_title:t.title||"", html_message:htmlMsg, message_html:htmlMsg, text_message:textMsg, message:textMsg
+    };
+    await window.emailjs.send(cfg.serviceId,cfg.templateId,params);
+    t.emailLog=t.emailLog||[];
+    t.emailLog.push({type:"created",status:"sent",to:email,at:now(),provider:"EmailJS",serviceId:cfg.serviceId,templateId:cfg.templateId});
+    await saveRecord(tables.tickets,t);
+    state.tickets=await listRecords(tables.tickets);
+    if(!silent)toast("Comprobante enviado al solicitante");
+    return {ok:true,to:email};
+  }catch(err){
+    console.warn("Error enviando comprobante",err);
+    t.emailLog=t.emailLog||[];
+    t.emailLog.push({type:"created",status:"failed",to:email,at:now(),provider:"EmailJS",error:String(err?.text||err?.message||err)});
+    try{await saveRecord(tables.tickets,t);state.tickets=await listRecords(tables.tickets);}catch(e){}
+    if(!silent)Swal.fire({title:"No se pudo enviar el comprobante",html:`<div class="wizard-summary"><p>Destino usado por la app:</p><p><strong>${escapeHtml(email)}</strong></p><p>Si llega a otro correo, en EmailJS el campo <strong>To Email</strong> está fijo. Debe ser <strong>{{to_email}}</strong>.</p></div>`,confirmButtonColor:"#0d5bd2"});
+    return {ok:false,reason:"error",to:email};
+  }
+};
+
+if(typeof showSentEmailPreview==="function"){
+  const showSentEmailPreviewBeforeQa=showSentEmailPreview;
+  showSentEmailPreview=function(id,type="created"){
+    const t=state.tickets.find(x=>x.id===id);
+    if(t && type==="created"){
+      const email=qaTicketRequesterEmail(t) || "Sin correo válido";
+      Swal.fire({title:"Vista del comprobante",width:760,html:`<div class="wizard-summary"><p><strong>Destino real del comprobante:</strong> ${escapeHtml(email)}</p></div>${ticketEmailHtml(t,"created")}`,confirmButtonText:"Cerrar",confirmButtonColor:"#0d5bd2"});
+      return;
+    }
+    return showSentEmailPreviewBeforeQa(id,type);
+  };
+}
+
+const renderAppBeforeQaFinal=typeof renderApp==="function"?renderApp:null;
+if(renderAppBeforeQaFinal){renderApp=function(){renderAppBeforeQaFinal();qaCleanResidualMobileLayers();};}
+const renderViewBeforeQaFinal=typeof renderView==="function"?renderView:null;
+if(renderViewBeforeQaFinal){renderView=function(){renderViewBeforeQaFinal();qaCleanResidualMobileLayers();};}
+const bindViewBeforeQaFinal=typeof bindView==="function"?bindView:null;
+if(bindViewBeforeQaFinal){bindView=function(){bindViewBeforeQaFinal();qaCleanResidualMobileLayers();};}
+window.addEventListener("DOMContentLoaded",qaCleanResidualMobileLayers);
+window.addEventListener("resize",qaCleanResidualMobileLayers);
 
 window.addEventListener('DOMContentLoaded',async()=>{
   prepareIntroStart();
