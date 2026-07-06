@@ -2438,6 +2438,309 @@ body.create-mobile-compact{
   display:none!important;
 }
 
+
+/* =========================================================
+   QA FINAL ESTRUCTURA LIMPIA
+   - Se oculta estado Supabase conectado.
+   - Se elimina footer superpuesto del sidebar.
+   - Salir queda como acción discreta en tarjeta de usuario.
+   - Menú móvil final independiente, sin botones repetidos.
+   ========================================================= */
+.mode-pill,
+.side-footer,
+.qa-menu-status,
+.mobile-drawer-footer,
+.menu-backdrop,
+.mobile-drawer,
+.mobile-drawer-backdrop,
+#qaMobileMenuDrawer,
+#qaMobileMenuBackdrop{
+  display:none!important;
+  visibility:hidden!important;
+  pointer-events:none!important;
+}
+
+.clean-sidebar{
+  display:flex!important;
+  flex-direction:column!important;
+  min-height:100vh!important;
+  height:100vh!important;
+  overflow-y:auto!important;
+  overflow-x:hidden!important;
+}
+
+.clean-sidebar .nav{
+  flex:1 1 auto!important;
+  padding-bottom:14px!important;
+}
+
+.clean-user-card{
+  align-items:flex-start!important;
+}
+
+.clean-user-actions{
+  margin-top:10px!important;
+  display:flex!important;
+  gap:8px!important;
+  flex-wrap:wrap!important;
+}
+
+.clean-logout{
+  min-height:32px!important;
+  padding:7px 10px!important;
+  border-radius:12px!important;
+  font-size:11px!important;
+  background:#fff!important;
+  color:#be123c!important;
+  border:1px solid #fecdd3!important;
+  box-shadow:none!important;
+}
+
+.clean-refresh{
+  min-height:32px!important;
+  padding:7px 10px!important;
+  border-radius:12px!important;
+  font-size:11px!important;
+  background:#f7fbff!important;
+  color:#0b3b82!important;
+  border:1px solid rgba(11,59,130,.12)!important;
+  box-shadow:none!important;
+}
+
+.clean-top-actions{
+  gap:8px!important;
+}
+
+.clean-top-actions .btn{
+  white-space:nowrap!important;
+}
+
+@media(max-width:880px){
+  .clean-sidebar,
+  #sidebar{
+    display:none!important;
+    visibility:hidden!important;
+    pointer-events:none!important;
+    width:0!important;
+    height:0!important;
+  }
+
+  .app-shell{
+    display:block!important;
+    grid-template-columns:1fr!important;
+  }
+
+  .main{
+    width:100%!important;
+    min-width:0!important;
+    padding:10px 10px calc(22px + env(safe-area-inset-bottom))!important;
+    background:#f7fbff!important;
+  }
+
+  .topbar{
+    position:relative!important;
+    margin:0 0 10px 0!important;
+    padding:8px!important;
+    border-radius:22px!important;
+    background:#ffffff!important;
+    border:1px solid rgba(11,59,130,.10)!important;
+    box-shadow:0 8px 22px rgba(11,59,130,.06)!important;
+    display:grid!important;
+    grid-template-columns:44px 1fr!important;
+    gap:8px!important;
+    align-items:center!important;
+  }
+
+  .mobile-menu{
+    width:44px!important;
+    height:44px!important;
+    min-width:44px!important;
+    min-height:44px!important;
+    border-radius:17px!important;
+    display:inline-flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+  }
+
+  .page-title h1{
+    font-size:21px!important;
+    line-height:1.05!important;
+    margin:0!important;
+  }
+
+  .page-title p{
+    display:none!important;
+  }
+
+  .clean-top-actions{
+    grid-column:1 / -1!important;
+    display:flex!important;
+    gap:8px!important;
+    flex-wrap:wrap!important;
+    margin-top:2px!important;
+  }
+
+  .clean-top-actions .btn{
+    min-height:38px!important;
+    padding:8px 12px!important;
+    border-radius:16px!important;
+    font-size:12px!important;
+  }
+
+  .desktop-only{
+    display:none!important;
+  }
+
+  #finalMobileMenuBackdrop{
+    position:fixed!important;
+    inset:0!important;
+    z-index:2147483500!important;
+    background:rgba(3,22,45,.38)!important;
+    opacity:0!important;
+    visibility:hidden!important;
+    pointer-events:none!important;
+    transition:opacity .18s ease, visibility .18s ease!important;
+  }
+
+  #finalMobileMenuDrawer{
+    position:fixed!important;
+    top:0!important;
+    left:0!important;
+    bottom:0!important;
+    width:min(318px,86vw)!important;
+    height:100dvh!important;
+    z-index:2147483600!important;
+    transform:translateX(-110%)!important;
+    transition:transform .22s ease!important;
+    background:#ffffff!important;
+    color:#0b3b82!important;
+    border-radius:0 28px 28px 0!important;
+    box-shadow:28px 0 70px rgba(3,22,45,.28)!important;
+    padding:18px 14px calc(18px + env(safe-area-inset-bottom))!important;
+    overflow-y:auto!important;
+    -webkit-overflow-scrolling:touch!important;
+  }
+
+  body.final-menu-open{
+    overflow:hidden!important;
+  }
+
+  body.final-menu-open #finalMobileMenuBackdrop{
+    opacity:1!important;
+    visibility:visible!important;
+    pointer-events:auto!important;
+  }
+
+  body.final-menu-open #finalMobileMenuDrawer{
+    transform:translateX(0)!important;
+  }
+
+  .final-menu-head{
+    display:grid!important;
+    gap:10px!important;
+    justify-items:center!important;
+    padding:4px 4px 14px!important;
+    border-bottom:1px solid rgba(11,59,130,.10)!important;
+    margin-bottom:12px!important;
+  }
+
+  .final-menu-head img{
+    width:138px!important;
+    max-width:78%!important;
+    height:auto!important;
+  }
+
+  .final-menu-head small{
+    color:#315783!important;
+    text-align:center!important;
+    font-size:11px!important;
+    line-height:1.35!important;
+  }
+
+  .final-menu-user{
+    display:flex!important;
+    align-items:center!important;
+    gap:10px!important;
+    padding:10px!important;
+    margin:0 0 12px!important;
+    border-radius:20px!important;
+    background:#f7fbff!important;
+    border:1px solid rgba(11,59,130,.10)!important;
+  }
+
+  .final-menu-user img{
+    width:48px!important;
+    height:48px!important;
+    border-radius:16px!important;
+    object-fit:cover!important;
+  }
+
+  .final-menu-user strong{
+    display:block!important;
+    color:#0b3b82!important;
+    font-size:13px!important;
+    line-height:1.15!important;
+  }
+
+  .final-menu-user span{
+    display:block!important;
+    color:#60738f!important;
+    font-size:11px!important;
+    margin-top:3px!important;
+  }
+
+  .final-menu-actions{
+    margin-left:auto!important;
+    display:flex!important;
+    align-items:center!important;
+  }
+
+  .final-menu-actions button{
+    min-height:34px!important;
+    padding:7px 10px!important;
+    border-radius:12px!important;
+    background:#fff1f2!important;
+    color:#be123c!important;
+    border:1px solid #fecdd3!important;
+    font-size:11px!important;
+    font-weight:900!important;
+  }
+
+  .final-menu-nav{
+    display:grid!important;
+    gap:8px!important;
+  }
+
+  .final-menu-nav button{
+    width:100%!important;
+    min-height:52px!important;
+    display:flex!important;
+    align-items:center!important;
+    gap:12px!important;
+    text-align:left!important;
+    border-radius:18px!important;
+    padding:12px 14px!important;
+    background:#f7fbff!important;
+    color:#0b3b82!important;
+    border:1px solid rgba(11,59,130,.10)!important;
+    font-family:"Century Gothic",Arial,sans-serif!important;
+    font-size:14px!important;
+    font-weight:900!important;
+    touch-action:manipulation!important;
+  }
+
+  .final-menu-nav button.active{
+    background:linear-gradient(135deg,#0b3b82,#0d5bd2)!important;
+    color:#ffffff!important;
+    box-shadow:0 12px 26px rgba(13,91,210,.18)!important;
+  }
+
+  .final-menu-nav .icon{
+    min-width:26px!important;
+    font-size:20px!important;
+  }
+}
+
 </style>
 
   <!-- Iconos APP / iPhone / Navegador -->
@@ -6591,6 +6894,140 @@ if(bindViewBeforeFooterQa){
 
 window.addEventListener("DOMContentLoaded",()=>setTimeout(qaCleanFooterOverlaps,50));
 window.addEventListener("resize",()=>setTimeout(qaCleanFooterOverlaps,50));
+
+
+/* =========================================================
+   QA FINAL ESTRUCTURA LIMPIA
+   ========================================================= */
+function cleanNavHtml(){
+  if(!isInternal()){
+    return `${navButton('create','📝','Radicar / consultar')}${navButton('ai','🤖','IA Calidad')}${navButton('game','🕹️','Juegos IA')}`;
+  }
+  return `${navButton('dashboard','🏠','Inicio')}${navButton('tickets','🎫','Solicitudes')}${navButton('create','📝','Nueva solicitud')}${hasLead()?navButton('kpis','📊','KPIs'):''}${hasLead()?navButton('team','🛠️','Equipo'):''}${navButton('ai','🤖','IA Calidad')}${navButton('game','🎮','Juegos IA')}`;
+}
+
+function cleanTopActionsHtml(){
+  const createBtn=state.view!=="create"?`<button class="btn primary" onclick="setView('create')">Nueva solicitud</button>`:"";
+  const refreshBtn=isInternal()?`<button class="btn ghost desktop-only" onclick="refreshData()">Actualizar</button>`:"";
+  return `${createBtn}${refreshBtn}`;
+}
+
+renderApp=function(){
+  const app=document.getElementById("app");
+  app.innerHTML=`<div class="app-shell">
+    <aside class="sidebar clean-sidebar" id="sidebar">
+      <div class="brand"><img src="${assets.logo}" alt="Dream Team de Calidad"><small>Mesa de ayuda de calidad y mejoramiento continuo.</small></div>
+      <div class="user-card clean-user-card">
+        <img class="avatar" src="${state.user.avatar||assets.loginDance}" onerror="this.src='${assets.loginDance}'">
+        <div>
+          <div class="user-name">${escapeHtml(state.user.name)}</div>
+          <div class="user-role">${escapeHtml(state.user.role)}</div>
+          <div class="user-status">${escapeHtml(state.user.statusText||'Disponible')}</div>
+          <div class="clean-user-actions">
+            ${isInternal()?`<button class="clean-refresh" onclick="refreshData()">Actualizar</button>`:""}
+            <button class="clean-logout" onclick="logout()">Salir</button>
+          </div>
+        </div>
+      </div>
+      <nav class="nav">${cleanNavHtml()}</nav>
+    </aside>
+    <main class="main">
+      <header class="topbar">
+        <button class="mobile-menu" type="button" aria-label="Abrir menú">☰</button>
+        <div class="page-title"><h1>${pageTitle()}</h1><p>${pageSub()}</p></div>
+        <div class="top-actions clean-top-actions">${cleanTopActionsHtml()}</div>
+      </header>
+      <div id="view"></div>
+    </main>
+    <button class="float-ai" onclick="setView('ai')">🤖 IA Calidad</button>
+  </div>`;
+  renderView();
+  buildFinalMobileMenu();
+  installFinalMobileMenuButton();
+  setTimeout(()=>{
+    if(window.gsap)gsap.from("#view .card, #view .metric, #view .lane",{opacity:0,y:12,duration:.26,stagger:.018,ease:"power2.out"});
+  },30);
+};
+
+function finalMenuItems(){
+  if(!isInternal()){
+    return [
+      {view:"create",icon:"📝",label:"Radicar / consultar"},
+      {view:"ai",icon:"🤖",label:"IA Calidad"},
+      {view:"game",icon:"🎮",label:"Juegos IA"}
+    ];
+  }
+  const items=[
+    {view:"dashboard",icon:"🏠",label:"Inicio"},
+    {view:"tickets",icon:"🎫",label:"Solicitudes"},
+    {view:"create",icon:"📝",label:"Nueva solicitud"},
+    {view:"ai",icon:"🤖",label:"IA Calidad"},
+    {view:"game",icon:"🎮",label:"Juegos IA"}
+  ];
+  if(hasLead())items.splice(3,0,{view:"kpis",icon:"📊",label:"KPIs"},{view:"team",icon:"🛠️",label:"Equipo"});
+  return items;
+}
+
+function closeFinalMobileMenu(){document.body.classList.remove("final-menu-open");}
+function openFinalMobileMenu(){buildFinalMobileMenu();document.body.classList.add("final-menu-open");}
+
+function buildFinalMobileMenu(){
+  document.querySelectorAll("#qaMobileMenuDrawer,#qaMobileMenuBackdrop,.mobile-drawer,.mobile-drawer-backdrop,.menu-backdrop").forEach(el=>el.remove());
+  let bg=document.getElementById("finalMobileMenuBackdrop");
+  if(!bg){
+    bg=document.createElement("div");
+    bg.id="finalMobileMenuBackdrop";
+    bg.addEventListener("click",closeFinalMobileMenu);
+    document.body.appendChild(bg);
+  }
+  let drawer=document.getElementById("finalMobileMenuDrawer");
+  if(!drawer){
+    drawer=document.createElement("aside");
+    drawer.id="finalMobileMenuDrawer";
+    document.body.appendChild(drawer);
+  }
+  drawer.innerHTML=`<div class="final-menu-head"><img src="${assets.logo}" alt="Dream Team de Calidad"><small>Mesa de ayuda de calidad y mejoramiento continuo.</small></div>
+    <div class="final-menu-user">
+      <img src="${state.user.avatar||assets.fun}" onerror="this.src='${assets.fun}'">
+      <div><strong>${escapeHtml(state.user.name)}</strong><span>${escapeHtml(state.user.role)}</span></div>
+      <div class="final-menu-actions"><button type="button" data-final-action="logout">Salir</button></div>
+    </div>
+    <nav class="final-menu-nav">${finalMenuItems().map(i=>`<button type="button" class="${state.view===i.view?'active':''}" data-final-view="${i.view}"><span class="icon">${i.icon}</span><span>${i.label}</span></button>`).join("")}</nav>`;
+  drawer.querySelectorAll("[data-final-view]").forEach(btn=>{
+    btn.onclick=(ev)=>{ev.preventDefault();ev.stopPropagation();const v=btn.dataset.finalView;closeFinalMobileMenu();setTimeout(()=>setView(v),80);};
+    btn.ontouchend=(ev)=>{ev.preventDefault();ev.stopPropagation();const v=btn.dataset.finalView;closeFinalMobileMenu();setTimeout(()=>setView(v),80);};
+  });
+  const logoutBtn=drawer.querySelector('[data-final-action="logout"]');
+  if(logoutBtn){
+    logoutBtn.onclick=(ev)=>{ev.preventDefault();ev.stopPropagation();closeFinalMobileMenu();setTimeout(()=>logout(),80);};
+    logoutBtn.ontouchend=(ev)=>{ev.preventDefault();ev.stopPropagation();closeFinalMobileMenu();setTimeout(()=>logout(),80);};
+  }
+}
+
+function installFinalMobileMenuButton(){
+  const btn=document.querySelector(".mobile-menu");
+  if(!btn)return;
+  btn.removeAttribute("onclick");
+  btn.onclick=(ev)=>{ev.preventDefault();ev.stopPropagation();if(document.body.classList.contains("final-menu-open"))closeFinalMobileMenu();else openFinalMobileMenu();};
+  btn.ontouchend=(ev)=>{ev.preventDefault();ev.stopPropagation();if(document.body.classList.contains("final-menu-open"))closeFinalMobileMenu();else openFinalMobileMenu();};
+}
+
+toggleMenu=function(){
+  if(window.matchMedia("(max-width:880px)").matches){
+    if(document.body.classList.contains("final-menu-open"))closeFinalMobileMenu();
+    else openFinalMobileMenu();
+    return;
+  }
+  document.getElementById("sidebar")?.classList.toggle("open");
+};
+
+const setViewBeforeCleanLayout=setView;
+setView=function(v){
+  closeFinalMobileMenu();
+  setViewBeforeCleanLayout(v);
+};
+
+window.addEventListener("resize",()=>{if(!window.matchMedia("(max-width:880px)").matches)closeFinalMobileMenu();});
 
 window.addEventListener('DOMContentLoaded',async()=>{
   prepareIntroStart();
