@@ -2309,6 +2309,135 @@ body.create-mobile-compact{
   body.qa-menu-open #qaMobileMenuBackdrop{opacity:1!important;visibility:visible!important;pointer-events:auto!important}
 }
 
+
+/* =========================================================
+   QA FIX: SUPABASE CONECTADO / SALIR SIN SUPERPOSICIÓN
+   ========================================================= */
+.sidebar{
+  display:flex!important;
+  flex-direction:column!important;
+  gap:0!important;
+  overflow-y:auto!important;
+  overflow-x:hidden!important;
+  min-height:100vh!important;
+}
+
+.sidebar .brand,
+.sidebar .user-card{
+  flex:0 0 auto!important;
+}
+
+.sidebar .nav{
+  flex:1 1 auto!important;
+  min-height:0!important;
+  overflow:visible!important;
+  padding-bottom:14px!important;
+}
+
+.sidebar .side-footer{
+  flex:0 0 auto!important;
+  position:static!important;
+  margin-top:auto!important;
+  padding-top:14px!important;
+  border-top:1px solid rgba(11,59,130,.10)!important;
+  background:transparent!important;
+  display:grid!important;
+  gap:10px!important;
+  width:100%!important;
+  z-index:1!important;
+}
+
+.sidebar .mode-pill{
+  width:100%!important;
+  box-sizing:border-box!important;
+  justify-content:flex-start!important;
+  min-height:42px!important;
+  margin:0!important;
+}
+
+.sidebar .side-footer .btn,
+.sidebar .side-footer button{
+  width:100%!important;
+  justify-content:center!important;
+  margin:0!important;
+  position:relative!important;
+  z-index:2!important;
+}
+
+@media(max-width:880px){
+  #qaMobileMenuDrawer{
+    display:flex!important;
+    flex-direction:column!important;
+    gap:0!important;
+  }
+
+  #qaMobileMenuDrawer .qa-menu-head,
+  #qaMobileMenuDrawer .qa-menu-user{
+    flex:0 0 auto!important;
+  }
+
+  #qaMobileMenuDrawer .qa-menu-nav{
+    flex:1 1 auto!important;
+    min-height:0!important;
+    overflow:visible!important;
+    padding-bottom:12px!important;
+  }
+
+  #qaMobileMenuDrawer .qa-menu-footer{
+    flex:0 0 auto!important;
+    position:static!important;
+    margin-top:auto!important;
+    padding-top:12px!important;
+    border-top:1px solid rgba(11,59,130,.10)!important;
+    display:grid!important;
+    gap:8px!important;
+    background:#ffffff!important;
+    z-index:3!important;
+  }
+
+  #qaMobileMenuDrawer .qa-menu-status{
+    width:100%!important;
+    min-height:38px!important;
+    display:flex!important;
+    align-items:center!important;
+    gap:8px!important;
+    padding:9px 11px!important;
+    border-radius:15px!important;
+    background:#f7fbff!important;
+    border:1px solid rgba(11,59,130,.10)!important;
+    color:#315783!important;
+    font-size:12px!important;
+    font-weight:800!important;
+    box-sizing:border-box!important;
+  }
+
+  #qaMobileMenuDrawer .qa-menu-footer button{
+    position:relative!important;
+    z-index:4!important;
+    margin:0!important;
+  }
+
+  .mobile-drawer-footer,
+  .mobile-drawer .mode-pill,
+  .mobile-drawer .side-footer{
+    display:none!important;
+    visibility:hidden!important;
+    pointer-events:none!important;
+  }
+
+  body.qa-menu-open .float-ai{
+    display:none!important;
+  }
+}
+
+#view > .side-footer,
+.content > .side-footer,
+.main > .side-footer,
+#view > .mode-pill,
+.content > .mode-pill{
+  display:none!important;
+}
+
 </style>
 
   <!-- Iconos APP / iPhone / Navegador -->
@@ -6360,6 +6489,108 @@ const bindViewBeforeQaFinal=typeof bindView==="function"?bindView:null;
 if(bindViewBeforeQaFinal){bindView=function(){bindViewBeforeQaFinal();qaCleanResidualMobileLayers();};}
 window.addEventListener("DOMContentLoaded",qaCleanResidualMobileLayers);
 window.addEventListener("resize",qaCleanResidualMobileLayers);
+
+
+/* =========================================================
+   QA FIX FOOTER MENU: Supabase conectado / Salir
+   ========================================================= */
+function qaModeLabelFooter(){
+  try{
+    if(typeof modeOn==="function" && typeof modeLabel==="function"){
+      return `<div class="qa-menu-status"><span class="dot ${modeOn()?"on":""}"></span>${escapeHtml(modeLabel())}</div>`;
+    }
+  }catch(e){}
+  return `<div class="qa-menu-status"><span class="dot on"></span>Supabase conectado</div>`;
+}
+
+function qaFixMobileDrawerFooter(){
+  const drawer=document.getElementById("qaMobileMenuDrawer");
+  if(!drawer)return;
+
+  drawer.querySelectorAll(".mobile-drawer-footer,.side-footer").forEach(el=>el.remove());
+
+  let footer=drawer.querySelector(".qa-menu-footer");
+  if(!footer){
+    footer=document.createElement("div");
+    footer.className="qa-menu-footer";
+    drawer.appendChild(footer);
+  }
+
+  footer.innerHTML=`${qaModeLabelFooter()}<button type="button" data-qa-action="refresh">Actualizar</button><button type="button" data-qa-action="logout">Salir</button>`;
+
+  const refresh=footer.querySelector('[data-qa-action="refresh"]');
+  if(refresh){
+    refresh.onclick=function(ev){
+      ev.preventDefault();
+      ev.stopPropagation();
+      if(typeof qaCloseMobileMenu==="function")qaCloseMobileMenu();
+      else document.body.classList.remove("qa-menu-open");
+      setTimeout(()=>{if(typeof refreshData==="function")refreshData();},80);
+    };
+  }
+
+  const logoutBtn=footer.querySelector('[data-qa-action="logout"]');
+  if(logoutBtn){
+    logoutBtn.onclick=function(ev){
+      ev.preventDefault();
+      ev.stopPropagation();
+      if(typeof qaCloseMobileMenu==="function")qaCloseMobileMenu();
+      else document.body.classList.remove("qa-menu-open");
+      setTimeout(()=>{if(typeof logout==="function")logout();},80);
+    };
+  }
+}
+
+function qaCleanFooterOverlaps(){
+  document.querySelectorAll("body > .side-footer, body > .mode-pill, #app > .side-footer, #app > .mode-pill").forEach(el=>el.remove());
+
+  const side=document.getElementById("sidebar");
+  if(side){
+    const footer=side.querySelector(".side-footer");
+    if(footer){
+      footer.style.position="static";
+      footer.style.marginTop="auto";
+      footer.style.zIndex="1";
+    }
+  }
+
+  qaFixMobileDrawerFooter();
+}
+
+if(typeof window.qaOpenMobileMenu==="function"){
+  const qaOpenMobileMenuBeforeFooter=window.qaOpenMobileMenu;
+  window.qaOpenMobileMenu=function(){
+    qaOpenMobileMenuBeforeFooter();
+    setTimeout(qaFixMobileDrawerFooter,20);
+  };
+}
+
+const renderAppBeforeFooterQa=typeof renderApp==="function"?renderApp:null;
+if(renderAppBeforeFooterQa){
+  renderApp=function(){
+    renderAppBeforeFooterQa();
+    setTimeout(qaCleanFooterOverlaps,20);
+  };
+}
+
+const renderViewBeforeFooterQa=typeof renderView==="function"?renderView:null;
+if(renderViewBeforeFooterQa){
+  renderView=function(){
+    renderViewBeforeFooterQa();
+    setTimeout(qaCleanFooterOverlaps,20);
+  };
+}
+
+const bindViewBeforeFooterQa=typeof bindView==="function"?bindView:null;
+if(bindViewBeforeFooterQa){
+  bindView=function(){
+    bindViewBeforeFooterQa();
+    setTimeout(qaCleanFooterOverlaps,20);
+  };
+}
+
+window.addEventListener("DOMContentLoaded",()=>setTimeout(qaCleanFooterOverlaps,50));
+window.addEventListener("resize",()=>setTimeout(qaCleanFooterOverlaps,50));
 
 window.addEventListener('DOMContentLoaded',async()=>{
   prepareIntroStart();
