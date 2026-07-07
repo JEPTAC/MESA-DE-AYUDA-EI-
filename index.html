@@ -3232,6 +3232,62 @@ textarea{
 }
 @media(max-width:880px){body.compact-menu-open #compactMobileMenuBackdrop{display:block!important;visibility:visible!important;pointer-events:auto!important;position:fixed!important;left:0!important;top:0!important;width:auto!important;height:auto!important;opacity:1!important;overflow:visible!important}body.compact-menu-open #compactMobileMenuDrawer{display:block!important;visibility:visible!important;pointer-events:auto!important;position:fixed!important;left:0!important;top:0!important;width:min(300px,84vw)!important;height:100dvh!important;opacity:1!important;overflow-y:auto!important}}
 
+
+/* =========================================================
+   ROLES / DESIGNACIÓN FINAL
+   ========================================================= */
+.assignment-panel{
+  margin-top:12px!important;
+  padding:12px!important;
+  border-radius:20px!important;
+  background:#fff!important;
+  border:1px solid rgba(11,59,130,.10)!important;
+  box-shadow:0 8px 22px rgba(11,59,130,.05)!important;
+}
+.assignment-panel h3{
+  margin:0 0 8px!important;
+  font-size:15px!important;
+  color:#0b3b82!important;
+}
+.assignment-grid{
+  display:grid!important;
+  grid-template-columns:repeat(4,minmax(0,1fr))!important;
+  gap:8px!important;
+}
+.assignment-card{
+  border:1px solid rgba(11,59,130,.10)!important;
+  background:#f7fbff!important;
+  border-radius:16px!important;
+  padding:10px!important;
+}
+.assignment-card strong{
+  display:block!important;
+  font-size:12px!important;
+  color:#0b3b82!important;
+  line-height:1.2!important;
+}
+.assignment-card span{
+  display:block!important;
+  font-size:10.5px!important;
+  color:#536379!important;
+  margin-top:4px!important;
+  line-height:1.25!important;
+}
+.assignment-card em{
+  display:block!important;
+  margin-top:6px!important;
+  font-style:normal!important;
+  font-size:10.5px!important;
+  color:#0a7a55!important;
+  font-weight:900!important;
+}
+@media(max-width:1100px){
+  .assignment-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+}
+@media(max-width:760px){
+  .assignment-grid{grid-template-columns:1fr!important}
+}
+
 </style>
 
   <!-- Iconos APP / iPhone / Navegador -->
@@ -3378,10 +3434,10 @@ const aiKnowledge=[
 
 const defaultUsers=[
   {id:"juan-esteban-perez",name:"Juan Esteban Pérez",role:"Super Admin / Desarrollador",roleKey:"super_admin",area:"Calidad y mejora continua",canAnswerTickets:true,canManageUsers:true,canSeeKPIs:true,canCloseTickets:true,canExtendWait:true,isSuperAdmin:true,statusText:"Desarrollador y administrador principal de la Mesa de Ayuda de Calidad.",avatar:"assets/enviado_penguin.gif",pinHash:"0ca4a4f1cff90553b0473d52fe0127f3a0e311477ae449c214a14bc863af4c09",active:true},
-  {id:"juan-camilo-montoya",name:"Juan Camilo Montoya",role:"Analista de calidad",roleKey:"analista_calidad",area:"Calidad y mejora continua",canAnswerTickets:true,canManageUsers:false,canSeeKPIs:true,canCloseTickets:true,canExtendWait:true,isSuperAdmin:false,statusText:"Disponible para atender solicitudes, revisar procesos y apoyar documentación.",avatar:"assets/soporte_trabajando.gif",pinHash:"ed5955c149f00ce17ba64acd89ffa3963f5c42dc3e62ac2b45acd45c2bfeda1b",active:true},
-  {id:"maria-fernanda-zamudio",name:"María Fernanda Zamudio",role:"Analista de calidad",roleKey:"analista_calidad",area:"Calidad y mejora continua",canAnswerTickets:true,canManageUsers:false,canSeeKPIs:true,canCloseTickets:true,canExtendWait:true,isSuperAdmin:false,statusText:"Apoyo en gestión documental, procedimientos, indicadores y seguimiento.",avatar:"assets/documento_proceso.gif",pinHash:"90de4e454ee7dc8a0a33a006ecb48ae76cd8d29a182c38e6a2b129c466a7d8b8",active:true},
-  {id:"luis-grisales",name:"Luis Grisales",role:"Jefe de auditoría interna",roleKey:"jefe_auditoria_interna",area:"Auditoría interna",canAnswerTickets:true,canManageUsers:false,canSeeKPIs:true,canCloseTickets:true,canExtendWait:true,isSuperAdmin:false,statusText:"Enfocado en auditoría, hallazgos, trazabilidad y cierre con evidencia.",avatar:"assets/ampliar_espera.gif",pinHash:"7f25da57311a420ee12b065d163eecab55538f34ec017db5d34628914fc48dde",active:true},
-  {id:"yessica-castro",name:"Yessica Castro",role:"Jefe general",roleKey:"jefe_general",area:"Auditoría y calidad",canAnswerTickets:true,canManageUsers:false,canSeeKPIs:true,canCloseTickets:true,canExtendWait:true,isSuperAdmin:false,statusText:"Dirección general de calidad, auditoría, seguimiento y mejora continua.",avatar:"assets/login_dance.gif",pinHash:"dca4277d226c9d940715a39f26f4f4093342d88b966bdc6c08c01ff4bcb5f446",active:true}
+  {id:"juan-camilo-montoya",name:"Juan Camilo Montoya",role:"Analista de Calidad y Mejoramiento Continuo",roleKey:"analista_calidad",area:"Calidad y mejora continua",canAnswerTickets:true,canManageUsers:false,canSeeKPIs:true,canCloseTickets:true,canExtendWait:true,isSuperAdmin:false,statusText:"Disponible para atender solicitudes, revisar procesos y apoyar documentación.",avatar:"assets/soporte_trabajando.gif",pinHash:"ed5955c149f00ce17ba64acd89ffa3963f5c42dc3e62ac2b45acd45c2bfeda1b",active:true},
+  {id:"maria-fernanda-zamudio",name:"María Fernanda Zamudio",role:"Analista de Calidad y Mejoramiento Continuo",roleKey:"analista_calidad",area:"Calidad y mejora continua",canAnswerTickets:true,canManageUsers:false,canSeeKPIs:true,canCloseTickets:true,canExtendWait:true,isSuperAdmin:false,statusText:"Apoyo en gestión documental, procedimientos, indicadores y seguimiento.",avatar:"assets/documento_proceso.gif",pinHash:"90de4e454ee7dc8a0a33a006ecb48ae76cd8d29a182c38e6a2b129c466a7d8b8",active:true},
+  {id:"luis-grisales",name:"Luis Grisales",role:"Analista de auditoría",roleKey:"jefe_auditoria_interna",area:"Auditoría interna",canAnswerTickets:true,canManageUsers:false,canSeeKPIs:true,canCloseTickets:true,canExtendWait:true,isSuperAdmin:false,statusText:"Enfocado en auditoría, hallazgos, trazabilidad y cierre con evidencia.",avatar:"assets/ampliar_espera.gif",pinHash:"7f25da57311a420ee12b065d163eecab55538f34ec017db5d34628914fc48dde",active:true},
+  {id:"yessica-castro",name:"Yessica Castro",role:"Jefe de auditoría y calidad",roleKey:"jefe_general",area:"Auditoría y calidad",canAnswerTickets:true,canManageUsers:false,canSeeKPIs:true,canCloseTickets:true,canExtendWait:true,isSuperAdmin:false,statusText:"Dirección general de calidad, auditoría, seguimiento y mejora continua.",avatar:"assets/login_dance.gif",pinHash:"dca4277d226c9d940715a39f26f4f4093342d88b966bdc6c08c01ff4bcb5f446",active:true}
 ];
 
 let audioPlayer=null;
@@ -3401,7 +3457,7 @@ function normalize(row){return row&&row.payload?{...row.payload,id:row.id,create
 function payloadOf(item){const p={...item};delete p.created_at;delete p.updated_at;return p}
 function responders(){return state.users.filter(u=>u.active!==false && u.role!=="Solicitante")}
 function isInternal(){return state.user && state.user.role!=="Solicitante"}
-function hasLead(){return !!(state.user && ["Jefe de auditoría interna","Jefe general","Administrador","Super Admin / Desarrollador"].includes(state.user.role))}
+function hasLead(){return !!(state.user && ["Analista de auditoría","Jefe de auditoría y calidad","Administrador","Super Admin / Desarrollador"].includes(state.user.role))}
 function userName(id){return state.users.find(u=>u.id===id)?.name||"Sin asignar"}
 function humanSize(bytes){const n=Number(bytes||0);if(!n)return "0 KB";if(n<1024)return n+" B";if(n<1048576)return (n/1024).toFixed(1)+" KB";return (n/1048576).toFixed(2)+" MB"}
 function playSound(src){try{if(audioPlayer){audioPlayer.pause();audioPlayer.currentTime=0}audioPlayer=new Audio(src);audioPlayer.volume=.95;audioPlayer.play().catch(()=>{})}catch(e){}}
@@ -3608,9 +3664,9 @@ function toggleMenu(){document.getElementById("sidebar")?.classList.toggle("open
 async function refreshData(){const current=state.view;const selected=state.selectedTicketId;state.users=await listRecords(tables.users);state.tickets=await listRecords(tables.tickets);state.aiMemories=await listRecords(tables.ai);state.scores=await listRecords(tables.scores);if(selected){state.selectedTicketId=selected;state.selectedTicket=state.tickets.find(t=>t.id===selected)||null;if(state.selectedTicket)state.view="detail";else state.view=current}else state.view=current;renderApp();toast("Información actualizada")}
 
 function navButton(view,icon,label){return `<button class="${state.view===view?'active':''}" onclick="setView('${view}')"><span class="icon">${icon}</span><span>${label}</span></button>`}
-function navHtml(){if(!isInternal())return `${navButton('create','📝','Radicar / consultar')}${navButton('ai','🤖','IA Calidad')}${navButton('game','🕹️','Juegos IA')}`;return `${navButton('dashboard','🛰️','Centro de control')}${navButton('tickets','🎧','Mesa de ayuda')}${navButton('create','📝','Nueva solicitud')}${navButton('kpis','📊','KPIs ejecutivos')}${navButton('team','🛠️','Equipo soporte')}${navButton('ai','🤖','IA Calidad')}${navButton('game','🕹️','Juegos IA')}`}
-function pageTitle(){return {dashboard:"Centro de control",tickets:"Solicitudes trazables",detail:"Solicitud trazable",create:"Nueva solicitud",kpis:"KPIs y productividad",team:"Equipo Dream Team",ai:"IA de Calidad",game:"Juegos IA de calidad"}[state.view]||"Mesa de ayuda"}
-function pageSub(){return {dashboard:"Productividad, carga, tiempos y radar general del proceso.",tickets:"Revisa el origen, responsable, estado y trazabilidad de cada caso.",detail:"Consulta puntual con línea de tiempo, adjuntos, chat y cierre.",create:"Radica solicitudes y deja claro de dónde viene, para quién va y qué se espera.",kpis:"Indicadores para medir lo que más le piden al área y cuánto tarda en responder.",team:"Usuarios internos, roles y permisos del Dream Team.",ai:"Chatbot entrenable para apoyar solicitudes, respuestas y aprendizaje.",game:"Tres modos de juego para reforzar criterio, rapidez y comparación."}[state.view]||""}
+function navHtml(){if(!isInternal())return `${navButton('create','📝','Radicar / consultar')}${navButton('ai','🤖','IA Calidad')}${navButton('game','🕹️','Juegos IA')}`;return `${navButton('dashboard','🛰️','Inicio')}${navButton('tickets','🎧','Mesa de ayuda')}${navButton('create','📝','Nueva solicitud')}${navButton('kpis','📊','KPIs')}${navButton('team','🛠️','Equipo soporte')}${navButton('ai','🤖','IA Calidad')}${navButton('game','🕹️','Juegos IA')}`}
+function pageTitle(){return {dashboard:"Inicio",tickets:"Solicitudes",detail:"Solicitud",create:"Nueva solicitud",kpis:"KPIs",team:"Equipo",ai:"IA Calidad",game:"Juegos IA"}[state.view]||"Mesa de ayuda"}
+function pageSub(){return {dashboard:"Resumen de solicitudes y tiempos.",tickets:"Consulta solicitudes, responsables y estados.",detail:"Detalle de la solicitud y su trazabilidad.",create:"Registra y consulta solicitudes de calidad.",kpis:"Indicadores de solicitudes y tiempos.",team:"Usuarios internos, roles y permisos del Dream Team.",ai:"Asistente para orientar solicitudes y respuestas.",game:"Juegos de apoyo para el aprendizaje."}[state.view]||""}
 function setView(v){if(!isInternal()&&!['create','ai','game'].includes(v))v='create';state.view=v;if(v!=='detail'){state.selectedTicketId=null;state.selectedTicket=null}renderApp()}
 
 function renderApp(){
@@ -3676,7 +3732,7 @@ function dashboardHtml(){
   const response=Math.round(total?(withResponse/total)*100:0);
   const avgHours=(()=>{const rows=state.tickets.filter(t=>t.acceptedAt&&t.finishedAt);if(!rows.length)return 0;return Number((rows.reduce((a,t)=>a+hoursBetween(t.acceptedAt,t.finishedAt),0)/rows.length).toFixed(1))})();
   const topCat=Object.entries(countBy(state.tickets,"category")).sort((a,b)=>b[1]-a[1])[0]||["Sin datos",0];
-  return `<div class="executive-hero"><div class="executive-card"><span class="executive-kicker">🛰️ Centro ejecutivo de mesa de ayuda</span><h2 class="executive-title">Calidad, trazabilidad y productividad en tiempo real</h2><p class="executive-sub">Vista ejecutiva del proceso de Calidad y Mejoramiento Continuo: carga operativa, tiempos, estados, solicitudes críticas y comportamiento del servicio.</p><div class="executive-strip"><span class="executive-chip">🎧 ${open} abiertas</span><span class="executive-chip">⚠️ ${critical} críticas</span><span class="executive-chip">✅ ${closed} cerradas</span><span class="executive-chip">📌 Top categoría: ${escapeHtml(topCat[0])}</span></div><div class="sla-bar"><span style="width:${Math.max(4,sla)}%"></span></div></div><div class="executive-card health-panel"><div class="health-row"><span>Resolución general</span><strong>${sla}%</strong></div><div class="health-row"><span>Aceptación</span><strong>${acceptance}%</strong></div><div class="health-row"><span>Respuesta registrada</span><strong>${response}%</strong></div><div class="health-row"><span>Promedio cierre</span><strong>${avgHours} h</strong></div></div></div><div class="grid cols-4"><div class="card metric service"><div class="label">Solicitudes totales</div><div class="value">${total}</div><div class="hint">Histórico cargado</div></div><div class="card metric warn"><div class="label">En espera</div><div class="value">${waiting}</div><div class="hint">Pendientes o ampliadas</div></div><div class="card metric success"><div class="label">Resueltas</div><div class="value">${ready}</div><div class="hint">Listas para validar</div></div><div class="card metric danger"><div class="label">Críticas</div><div class="value">${critical}</div><div class="hint">Alta prioridad o monedas</div></div></div><div class="support-row"><div class="support-mini"><small>Demanda principal</small><strong>${escapeHtml(topCat[0])}</strong></div><div class="support-mini"><small>Solicitudes abiertas</small><strong>${open}</strong></div><div class="support-mini"><small>Cerradas</small><strong>${closed}</strong></div></div><div class="grid cols-2" style="margin-top:18px"><div class="card"><div class="section-title"><h2>Distribución por estado</h2><span>flujo del servicio</span></div><div class="chart-box"><canvas id="chartStatus"></canvas></div></div><div class="card"><div class="section-title"><h2>Solicitudes por responsable</h2><span>carga operativa</span></div><div class="chart-box"><canvas id="chartAssignee"></canvas></div></div></div><div class="card" style="margin-top:18px"><div class="section-title"><h2>Kanban operativo</h2><span>${state.tickets.length} solicitudes</span></div><div class="kanban">${statusFlow.map(st=>`<div class="lane"><h3>${escapeHtml(st)}</h3>${state.tickets.filter(t=>t.status===st).slice(0,6).map(t=>`<div class="mini-ticket" onclick="openTicket('${t.id}')"><strong>${escapeHtml(t.code)} · ${escapeHtml(t.title)}</strong><p>${escapeHtml(t.requesterArea||'Sin área')} · ${escapeHtml(userName(t.assignedTo))}</p></div>`).join("")||`<div class="empty">Sin solicitudes</div>`}</div>`).join("")}</div></div>`
+  return `<div class="executive-hero"><div class="executive-card"><span class="executive-kicker">🛰️ Centro ejecutivo de mesa de ayuda</span><h2 class="executive-title">Calidad, trazabilidad y productividad en tiempo real</h2><p class="executive-sub">Seguimiento general de solicitudes, tiempos y estados.</p><div class="executive-strip"><span class="executive-chip">🎧 ${open} abiertas</span><span class="executive-chip">⚠️ ${critical} críticas</span><span class="executive-chip">✅ ${closed} cerradas</span><span class="executive-chip">📌 Top categoría: ${escapeHtml(topCat[0])}</span></div><div class="sla-bar"><span style="width:${Math.max(4,sla)}%"></span></div></div><div class="executive-card health-panel"><div class="health-row"><span>Resolución general</span><strong>${sla}%</strong></div><div class="health-row"><span>Aceptación</span><strong>${acceptance}%</strong></div><div class="health-row"><span>Respuesta registrada</span><strong>${response}%</strong></div><div class="health-row"><span>Promedio cierre</span><strong>${avgHours} h</strong></div></div></div><div class="grid cols-4"><div class="card metric service"><div class="label">Solicitudes totales</div><div class="value">${total}</div><div class="hint">Histórico cargado</div></div><div class="card metric warn"><div class="label">En espera</div><div class="value">${waiting}</div><div class="hint">Pendientes o ampliadas</div></div><div class="card metric success"><div class="label">Resueltas</div><div class="value">${ready}</div><div class="hint">Listas para validar</div></div><div class="card metric danger"><div class="label">Críticas</div><div class="value">${critical}</div><div class="hint">Alta prioridad o monedas</div></div></div><div class="support-row"><div class="support-mini"><small>Demanda principal</small><strong>${escapeHtml(topCat[0])}</strong></div><div class="support-mini"><small>Solicitudes abiertas</small><strong>${open}</strong></div><div class="support-mini"><small>Cerradas</small><strong>${closed}</strong></div></div><div class="grid cols-2" style="margin-top:18px"><div class="card"><div class="section-title"><h2>Distribución por estado</h2><span>flujo del servicio</span></div><div class="chart-box"><canvas id="chartStatus"></canvas></div></div><div class="card"><div class="section-title"><h2>Solicitudes por responsable</h2><span>carga operativa</span></div><div class="chart-box"><canvas id="chartAssignee"></canvas></div></div></div><div class="card" style="margin-top:18px"><div class="section-title"><h2>Kanban operativo</h2><span>${state.tickets.length} solicitudes</span></div><div class="kanban">${statusFlow.map(st=>`<div class="lane"><h3>${escapeHtml(st)}</h3>${state.tickets.filter(t=>t.status===st).slice(0,6).map(t=>`<div class="mini-ticket" onclick="openTicket('${t.id}')"><strong>${escapeHtml(t.code)} · ${escapeHtml(t.title)}</strong><p>${escapeHtml(t.requesterArea||'Sin área')} · ${escapeHtml(userName(t.assignedTo))}</p></div>`).join("")||`<div class="empty">Sin solicitudes</div>`}</div>`).join("")}</div></div>`
 }
 
 function filteredTickets(){
@@ -3826,7 +3882,7 @@ function keywordScore(q,keywords){if(!keywords?.length)return 0;const clean=norm
 function inferIntent(q){const clean=normalizeTextAI(q);const rules=[{intent:"radicacion",rx:/crear|radicar|ticket|solicitud|redactar|registrar/},{intent:"consulta",rx:/radicado|codigo|estado|buscar|solicitud dt/},{intent:"prioridad",rx:/urgente|critica|critica|prioridad/},{intent:"tiempos",rx:/espera|tiempo|demora|plazo/},{intent:"redaccion",rx:/mejorar texto|resumir|mas claro|menos largo|redactar/}];return (rules.find(r=>r.rx.test(clean))||{intent:"general"}).intent}
 function rankKnowledge(q){const intent=inferIntent(q);const memoryRows=state.aiMemories.map(m=>({id:m.id,intent:m.intent||'general',keywords:String(m.key||'').split(/[,;]+/),answer:m.answer||'',source:'Memoria'}));const all=[...aiKnowledge.map(k=>({...k,source:'Base'})),...(state.corpusKnowledge||[]).map(k=>({...k,source:k.source||'Corpus conversacional',keywords:k.keywords||[k.question,k.title],intent:k.intent||'general',answer:k.answer||''})),...(state.advancedKnowledge||[]),...memoryRows];return all.map(k=>{const s1=keywordScore(q,k.keywords||[]);const s2=overlapScore(q,(k.keywords||[]).join(' ')+' '+(k.answer||''));const s3=(k.intent===intent?1:0);return {...k,score:.48*s1+.32*s2+.20*s3}}).sort((a,b)=>b.score-a.score)}
 function findTicketAI(q){const clean=normalizeTextAI(q);const code=(clean.match(/dt-?\s*\d{1,6}/)||[])[0];if(code){const compact=code.replace(/\s+/g,'').toUpperCase().replace('DT','DT-');const t=state.tickets.find(x=>normalizeTextAI(x.code)===normalizeTextAI(compact)||normalizeTextAI(x.code).replace('-','')===normalizeTextAI(compact).replace('-',''));if(t)return t}return null}
-function suggestAssignee(category,priority){const jefe=state.users.find(u=>u.role==='Jefe general');const audit=state.users.find(u=>u.role.includes('auditoría')||u.role.includes('auditoria'));const analysts=state.users.filter(u=>u.role==='Analista de calidad');if(priority==='Crítica'&&jefe)return jefe.id;if(['Auditoría','Riesgo/Hallazgo'].includes(category)&&audit)return audit.id;return (analysts[0]||jefe||audit||state.users[0]||{}).id||''}
+function suggestAssignee(category,priority){const jefe=state.users.find(u=>u.role==='Jefe de auditoría y calidad');const audit=state.users.find(u=>u.role.includes('auditoría')||u.role.includes('auditoria'));const analysts=state.users.filter(u=>u.role==='Analista de Calidad y Mejoramiento Continuo');if(priority==='Crítica'&&jefe)return jefe.id;if(['Auditoría','Riesgo/Hallazgo'].includes(category)&&audit)return audit.id;return (analysts[0]||jefe||audit||state.users[0]||{}).id||''}
 function makeTitleFromText(text,category){const clean=String(text||'').replace(/\s+/g,' ').trim();let first=clean.split(/[\.\n]/)[0].slice(0,86);if(first.length<12)first=`Solicitud de ${category.toLowerCase()}`;return first.charAt(0).toUpperCase()+first.slice(1)}
 function draftTicketFromText(text){const clean=normalizeTextAI(text);const category=/auditoria|hallazgo|no conformidad/.test(clean)?'Auditoría':/indicador|kpi|dashboard|grafica|medir/.test(clean)?'Indicador/KPI':/capacitacion|induccion|entrenamiento/.test(clean)?'Capacitación':/riesgo|control/.test(clean)?'Riesgo/Hallazgo':/documento|formato|pdf|acta|matriz/.test(clean)?'Documento':/procedimiento|proceso|flujo|manual/.test(clean)?'Procedimiento':/mejora|optimizar/.test(clean)?'Mejora continua':'Consulta general';const priority=/urgente|critica|auditoria|vencido|bloquea|gerencia/.test(clean)?'Alta':/simple|consulta|cuando puedan|baja/.test(clean)?'Baja':'Media';const modality=/visita|presencial|campo|reunion|acompanamiento/.test(clean)?'Presencial':/documento|formato|pdf|acta|matriz|procedimiento/.test(clean)?'Documental':'Mixta';const title=makeTitleFromText(text,category);const description=`Necesidad identificada: ${text.trim()}\n\nResultado esperado: recibir orientación, ajuste, revisión o soporte del área de Calidad y Mejora Continua según el alcance de la solicitud.\n\nInformación mínima sugerida: proceso afectado, evidencia disponible, plazo esperado, impacto y persona de contacto.\n\nCriterio de cierre: dejar evidencia del análisis realizado, respuesta entregada y validación del solicitante.`;return {category,priority,modality,title,description,assignedTo:suggestAssignee(category,priority)}}
 function smallTalkResponse(q){const clean=normalizeTextAI(q).trim();if(/^(hola|holi|hello|buenas|buenos dias|buen dia|buenas tardes|buenas noches)$/.test(clean))return "¡Hola! 👋 Soy la IA del Dream Team de Calidad. Puedo conversar contigo normal, ayudarte a crear solicitudes, consultar radicados y resolver dudas del proceso.";if(/como estas|como vas|que tal|todo bien/.test(clean))return "Voy muy bien, gracias. Estoy lista para conversar, orientarte y ayudarte con solicitudes, calidad, auditoría, procedimientos o mejoras.";if(/quien eres|que eres|como te llamas/.test(clean))return "Soy la IA de la Mesa de Ayuda de Calidad y Mejoramiento Continuo. Converso contigo, ayudo a redactar solicitudes, explico estados, apoyo consultas y aprendo con la información del sistema.";if(/gracias|muchas gracias|te agradezco/.test(clean))return "¡Con gusto! Si quieres, también puedo ayudarte a redactar una solicitud o explicarte cualquier estado del proceso.";if(/adios|chao|nos vemos|hasta luego/.test(clean))return "¡Nos vemos! Cuando quieras vuelves y te ayudo con solicitudes, radicados o cualquier duda.";return ''}
@@ -4228,7 +4284,7 @@ Por favor registra mejor tu pregunta con esta estructura:
 Con eso puedo conversar contigo, organizar la radicación, sugerir prioridad, responsable y descripción completa.`,learn:false,actions:[aiAction("Crear solicitud","openCreate"),aiAction("Consultar radicado","focusLookup"),aiAction("Hablar con IA","focusAI")],confidence:0};
 }
 function aiHtml(){
-  return `<div class="ai-layout"><div class="card"><div class="section-title"><h2>IA de Calidad · Nivel máximo</h2><span>${AI_MAX_VERSION}</span></div><div class="ai-mode-note">Modo conversacional operativo: entiende lenguaje normal, usa similitud matemática, consulta corpus, memorias, tickets y puede convertir una necesidad en borrador de radicación.</div><div class="ai-brain-panel"><div class="ai-brain-chip"><strong>${state.aiMemories.length}</strong>memorias activas</div><div class="ai-brain-chip"><strong>${state.corpusKnowledge.length}</strong>registros de corpus</div><div class="ai-brain-chip"><strong>${state.tickets.length}</strong>tickets como contexto</div></div><div class="ai-chat" id="aiChat" style="margin-top:12px">${state.aiHistory.map(m=>`<div class="${m.me?'human':'bot'}">${escapeHtml(m.text)}</div>`).join('')||`<div class="bot">Hola. Soy la IA de Calidad. Escríbeme normal: “necesito radicar que cartera no puede subir el PDF de una factura”, “consulta DT-0001”, “ayúdame a redactar una solicitud”, o cualquier duda de calidad.</div>`}</div>${aiActionsHtml()}<div class="form" style="margin-top:12px"><div class="field"><label>Mensaje, pregunta u orden</label><input id="aiPrompt" placeholder="Ej. Soy de cartera, no puedo adjuntar el PDF de la factura y necesito radicar soporte"></div><button class="btn primary" onclick="askAI()">Conversar / analizar / ejecutar</button></div><div class="ai-quality-note">Si la IA no entiende con seguridad, pedirá que registres mejor la pregunta. Si detecta una solicitud, arma asunto, categoría, prioridad, modalidad, responsable y descripción.</div></div><div class="card"><div class="section-title"><h2>Acciones rápidas</h2><span>sin explorar la app</span></div>${aiQuickOptionsHtml()}<div class="section-title" style="margin-top:18px"><h2>Entrenar IA</h2><span>memoria + documentos + tickets + juegos</span></div><div class="form"><div class="field"><label>Subir documento</label><input id="knowledgeFile" type="file" accept=".pdf,.txt,.csv,.md,.json,.doc,.docx"></div><button class="btn ghost" onclick="learnFromFile()">Leer y aprender</button><div class="field"><label>Pregunta o palabra clave</label><input id="learnKey" placeholder="Ej. remanente, auditoría, procedimiento"></div><div class="field"><label>Respuesta esperada</label><textarea id="learnAnswer" placeholder="Escribe cómo debe responder el bot"></textarea></div><button class="btn gold" onclick="manualLearn()">Guardar memoria</button><div class="empty">El motor no inventa: calcula similitud contra conocimiento disponible. Si la confianza es baja, pide más datos antes de responder.</div></div></div></div>`;
+  return `<div class="ai-layout"><div class="card"><div class="section-title"><h2>IA Calidad · Nivel máximo</h2><span>${AI_MAX_VERSION}</span></div><div class="ai-mode-note">Modo conversacional operativo: entiende lenguaje normal, usa similitud matemática, consulta corpus, memorias, tickets y puede convertir una necesidad en borrador de radicación.</div><div class="ai-brain-panel"><div class="ai-brain-chip"><strong>${state.aiMemories.length}</strong>memorias activas</div><div class="ai-brain-chip"><strong>${state.corpusKnowledge.length}</strong>registros de corpus</div><div class="ai-brain-chip"><strong>${state.tickets.length}</strong>tickets como contexto</div></div><div class="ai-chat" id="aiChat" style="margin-top:12px">${state.aiHistory.map(m=>`<div class="${m.me?'human':'bot'}">${escapeHtml(m.text)}</div>`).join('')||`<div class="bot">Hola. Soy la IA Calidad. Escríbeme normal: “necesito radicar que cartera no puede subir el PDF de una factura”, “consulta DT-0001”, “ayúdame a redactar una solicitud”, o cualquier duda de calidad.</div>`}</div>${aiActionsHtml()}<div class="form" style="margin-top:12px"><div class="field"><label>Mensaje, pregunta u orden</label><input id="aiPrompt" placeholder="Ej. Soy de cartera, no puedo adjuntar el PDF de la factura y necesito radicar soporte"></div><button class="btn primary" onclick="askAI()">Conversar / analizar / ejecutar</button></div><div class="ai-quality-note">Si la IA no entiende con seguridad, pedirá que registres mejor la pregunta. Si detecta una solicitud, arma asunto, categoría, prioridad, modalidad, responsable y descripción.</div></div><div class="card"><div class="section-title"><h2>Acciones rápidas</h2><span>sin explorar la app</span></div>${aiQuickOptionsHtml()}<div class="section-title" style="margin-top:18px"><h2>Entrenar IA</h2><span>memoria + documentos + tickets + juegos</span></div><div class="form"><div class="field"><label>Subir documento</label><input id="knowledgeFile" type="file" accept=".pdf,.txt,.csv,.md,.json,.doc,.docx"></div><button class="btn ghost" onclick="learnFromFile()">Leer y aprender</button><div class="field"><label>Pregunta o palabra clave</label><input id="learnKey" placeholder="Ej. remanente, auditoría, procedimiento"></div><div class="field"><label>Respuesta esperada</label><textarea id="learnAnswer" placeholder="Escribe cómo debe responder el bot"></textarea></div><button class="btn gold" onclick="manualLearn()">Guardar memoria</button><div class="empty">El motor no inventa: calcula similitud contra conocimiento disponible. Si la confianza es baja, pide más datos antes de responder.</div></div></div></div>`;
 }
 function aiQuickOptionsHtml(){
   return `<div class="quick-grid"><button class="quick-option" onclick="sendQuickAI('hola')">👋 Conversar<small>Saludo, orientación y conversación normal.</small></button><button class="quick-option" onclick="sendQuickAI('necesito radicar una solicitud y quiero que me organices la información')">📝 Radicar con IA<small>Arma asunto, categoría, prioridad y descripción.</small></button><button class="quick-option" onclick="sendQuickAI('quiero consultar el estado de un radicado')">🔎 Consultar radicado<small>Busca estado, responsable y trazabilidad.</small></button><button class="quick-option" onclick="sendQuickAI('quiero que me expliques cómo clasificar una solicitud de calidad')">🎯 Clasificar caso<small>Define categoría, prioridad y modalidad.</small></button></div>`;
@@ -4378,7 +4434,7 @@ function aiKnowledgePool(){
 }
 
 function aiHtml(){
-  return `<div class="ai-layout"><div class="card"><div class="section-title"><h2>IA de Calidad · Cerebro Excelso</h2><span>${AI_MAX_VERSION} · ${state.cerebroKnowledge?.length||0} casos cerebro</span></div><div class="ai-mode-note">Modo conversacional especializado: sabe cargos, equipo, creador, apps, radicación, calidad, auditoría, documentos, KPIs y variantes con errores de ortografía. Usa similitud matemática y conocimiento transversal.</div><div class="ai-brain-panel"><div class="ai-brain-chip"><strong>${state.aiMemories.length}</strong>memorias activas</div><div class="ai-brain-chip"><strong>${state.corpusKnowledge.length}</strong>registros de corpus</div><div class="ai-brain-chip"><strong>${state.cerebroKnowledge?.length||0}</strong>casos transversales</div></div><div class="ai-chat" id="aiChat" style="margin-top:12px">${state.aiHistory.map(m=>`<div class="${m.me?'human':'bot'}">${escapeHtml(m.text)}</div>`).join('')||`<div class="bot">Hola. Soy la IA de Calidad con Cerebro Excelso. Puedes preguntarme quién creó la app, quién es cada persona del equipo, cómo radicar, cómo clasificar un caso, o escribirme con errores de ortografía y aun así intentaré organizar tu solicitud.</div>`}</div>${aiActionsHtml()}<div class="form" style="margin-top:12px"><div class="field"><label>Mensaje, pregunta u orden</label><input id="aiPrompt" placeholder="Ej. necesito mradicar una solisitud de cartera porque no sube el PDF de la factura"></div><button class="btn primary" onclick="askAI()">Conversar / analizar / ejecutar</button></div><div class="ai-quality-note">El cerebro no materializa millones de filas: combina plantillas, variantes y similitud matemática. Si no entiende con confianza suficiente, te pedirá área, problema, evidencia y resultado esperado.</div></div><div class="card"><div class="section-title"><h2>Acciones rápidas</h2><span>sin explorar la app</span></div>${aiQuickOptionsHtml()}<div class="section-title" style="margin-top:18px"><h2>Entrenar IA</h2><span>memoria + documentos + tickets + juegos</span></div><div class="form"><div class="field"><label>Subir documento</label><input id="knowledgeFile" type="file" accept=".pdf,.txt,.csv,.md,.json,.doc,.docx"></div><button class="btn ghost" onclick="learnFromFile()">Leer y aprender</button><div class="field"><label>Pregunta o palabra clave</label><input id="learnKey" placeholder="Ej. remanente, auditoría, procedimiento"></div><div class="field"><label>Respuesta esperada</label><textarea id="learnAnswer" placeholder="Escribe cómo debe responder el bot"></textarea></div><button class="btn gold" onclick="manualLearn()">Guardar memoria</button><div class="empty">Especializada en lo trabajado por Juan Esteban Pérez, el equipo de Calidad y las apps internas relacionadas.</div></div></div></div>`;
+  return `<div class="ai-layout"><div class="card"><div class="section-title"><h2>IA Calidad · Cerebro Excelso</h2><span>${AI_MAX_VERSION} · ${state.cerebroKnowledge?.length||0} casos cerebro</span></div><div class="ai-mode-note">Modo conversacional especializado: sabe cargos, equipo, creador, apps, radicación, calidad, auditoría, documentos, KPIs y variantes con errores de ortografía. Usa similitud matemática y conocimiento transversal.</div><div class="ai-brain-panel"><div class="ai-brain-chip"><strong>${state.aiMemories.length}</strong>memorias activas</div><div class="ai-brain-chip"><strong>${state.corpusKnowledge.length}</strong>registros de corpus</div><div class="ai-brain-chip"><strong>${state.cerebroKnowledge?.length||0}</strong>casos transversales</div></div><div class="ai-chat" id="aiChat" style="margin-top:12px">${state.aiHistory.map(m=>`<div class="${m.me?'human':'bot'}">${escapeHtml(m.text)}</div>`).join('')||`<div class="bot">Hola. Soy la IA Calidad con Cerebro Excelso. Puedes preguntarme quién creó la app, quién es cada persona del equipo, cómo radicar, cómo clasificar un caso, o escribirme con errores de ortografía y aun así intentaré organizar tu solicitud.</div>`}</div>${aiActionsHtml()}<div class="form" style="margin-top:12px"><div class="field"><label>Mensaje, pregunta u orden</label><input id="aiPrompt" placeholder="Ej. necesito mradicar una solisitud de cartera porque no sube el PDF de la factura"></div><button class="btn primary" onclick="askAI()">Conversar / analizar / ejecutar</button></div><div class="ai-quality-note">El cerebro no materializa millones de filas: combina plantillas, variantes y similitud matemática. Si no entiende con confianza suficiente, te pedirá área, problema, evidencia y resultado esperado.</div></div><div class="card"><div class="section-title"><h2>Acciones rápidas</h2><span>sin explorar la app</span></div>${aiQuickOptionsHtml()}<div class="section-title" style="margin-top:18px"><h2>Entrenar IA</h2><span>memoria + documentos + tickets + juegos</span></div><div class="form"><div class="field"><label>Subir documento</label><input id="knowledgeFile" type="file" accept=".pdf,.txt,.csv,.md,.json,.doc,.docx"></div><button class="btn ghost" onclick="learnFromFile()">Leer y aprender</button><div class="field"><label>Pregunta o palabra clave</label><input id="learnKey" placeholder="Ej. remanente, auditoría, procedimiento"></div><div class="field"><label>Respuesta esperada</label><textarea id="learnAnswer" placeholder="Escribe cómo debe responder el bot"></textarea></div><button class="btn gold" onclick="manualLearn()">Guardar memoria</button><div class="empty">Especializada en lo trabajado por Juan Esteban Pérez, el equipo de Calidad y las apps internas relacionadas.</div></div></div></div>`;
 }
 
 function aiQuickOptionsHtml(){
@@ -4599,7 +4655,7 @@ function aiNavigationGuide(q){
     return "Para adjuntar evidencia, ve al formulario “Radicar solicitud” y usa el campo “Adjuntar documentos”. Si tienes un enlace, colócalo en “Enlace o evidencia opcional”.";
   }
   if(/(donde|dónde|como|cómo).*(kpi|indicador|productividad)/.test(c)){
-    return "Para ver indicadores, entra al botón “KPIs ejecutivos” o “KPIs”. Ahí revisas productividad, estados y comportamiento de solicitudes.";
+    return "Para ver indicadores, entra al botón “KPIs” o “KPIs”. Ahí revisas productividad, estados y comportamiento de solicitudes.";
   }
   if(/(donde|dónde|como|cómo).*(juego|moneda|prioridad)/.test(c)){
     return "Para jugar y ganar monedas, entra a “Juegos IA”. Desde allí puedes acumular monedas y generar códigos de prioridad.";
@@ -4760,7 +4816,7 @@ async function askAI(){
 }
 
 function aiHtml(){
-  return `<div class="ai-layout"><div class="card"><div class="section-title"><h2>IA de Calidad · Senior</h2><span>${AI_SENIOR_VERSION}</span></div><div class="ai-mode-note">Responde de forma sobria, puede usar humor moderado, hace cálculos simples, guía con botones reales de la app y arma solicitudes paso a paso.</div><div class="ai-brain-panel"><div class="ai-brain-chip"><strong>${state.aiMemories.length}</strong>memorias</div><div class="ai-brain-chip"><strong>${state.cerebroKnowledge?.length||0}</strong>casos IA</div><div class="ai-brain-chip"><strong>${state.seniorKnowledge?.length||0}</strong>reglas senior</div><div class="ai-brain-chip"><strong>${state.trainingDocsKnowledge?.length||0}</strong>docs integrados</div></div><div class="ai-chat" id="aiChat" style="margin-top:12px">${state.aiHistory.map(m=>`<div class="${m.me?'human':'bot'}">${escapeHtml(m.text)}</div>`).join('')||`<div class="bot">Hola 😊 Puedo ayudarte a radicar una solicitud, decirte dónde dar clic, resolver dudas, hacer cálculos simples o identificar quién debe atender un documento.</div>`}</div>${aiActionsHtml()}<div class="form" style="margin-top:12px"><div class="field"><label>Mensaje, pregunta u orden</label><input id="aiPrompt" placeholder="Ej. Es un documento, pero no sé quién lo debe resolver"></div><button class="btn primary" onclick="askAI()">Conversar / resolver / guiar</button></div><div class="ai-quality-note">Ejemplo: escribe “necesito mradicar una solisitud por un docuemnto” y la IA te hará preguntas por turnos hasta dejar lista la radicación.</div></div><div class="card"><div class="section-title"><h2>Acciones rápidas</h2><span>orientación directa</span></div>${aiQuickOptionsHtml()}<div class="section-title" style="margin-top:18px"><h2>Entrenar IA</h2><span>documentos y memorias</span></div><div class="form"><div class="field"><label>Subir documento</label><input id="knowledgeFile" type="file" accept=".pdf,.txt,.csv,.md,.json,.doc,.docx"></div><button class="btn ghost" onclick="learnFromFile()">Leer y aprender</button><div class="field"><label>Pregunta o palabra clave</label><input id="learnKey" placeholder="Ej. quién resuelve documentos de auditoría"></div><div class="field"><label>Respuesta esperada</label><textarea id="learnAnswer" placeholder="Escribe cómo debe responder el bot"></textarea></div><button class="btn gold" onclick="manualLearn()">Guardar memoria</button><div class="empty">Respuesta limpia para usuario final: sin hablar de código, corpus o detalles técnicos innecesarios.</div></div></div></div>`;
+  return `<div class="ai-layout"><div class="card"><div class="section-title"><h2>IA Calidad · Senior</h2><span>${AI_SENIOR_VERSION}</span></div><div class="ai-mode-note">Responde de forma sobria, puede usar humor moderado, hace cálculos simples, guía con botones reales de la app y arma solicitudes paso a paso.</div><div class="ai-brain-panel"><div class="ai-brain-chip"><strong>${state.aiMemories.length}</strong>memorias</div><div class="ai-brain-chip"><strong>${state.cerebroKnowledge?.length||0}</strong>casos IA</div><div class="ai-brain-chip"><strong>${state.seniorKnowledge?.length||0}</strong>reglas senior</div><div class="ai-brain-chip"><strong>${state.trainingDocsKnowledge?.length||0}</strong>docs integrados</div></div><div class="ai-chat" id="aiChat" style="margin-top:12px">${state.aiHistory.map(m=>`<div class="${m.me?'human':'bot'}">${escapeHtml(m.text)}</div>`).join('')||`<div class="bot">Hola 😊 Puedo ayudarte a radicar una solicitud, decirte dónde dar clic, resolver dudas, hacer cálculos simples o identificar quién debe atender un documento.</div>`}</div>${aiActionsHtml()}<div class="form" style="margin-top:12px"><div class="field"><label>Mensaje, pregunta u orden</label><input id="aiPrompt" placeholder="Ej. Es un documento, pero no sé quién lo debe resolver"></div><button class="btn primary" onclick="askAI()">Conversar / resolver / guiar</button></div><div class="ai-quality-note">Ejemplo: escribe “necesito mradicar una solisitud por un docuemnto” y la IA te hará preguntas por turnos hasta dejar lista la radicación.</div></div><div class="card"><div class="section-title"><h2>Acciones rápidas</h2><span>orientación directa</span></div>${aiQuickOptionsHtml()}<div class="section-title" style="margin-top:18px"><h2>Entrenar IA</h2><span>documentos y memorias</span></div><div class="form"><div class="field"><label>Subir documento</label><input id="knowledgeFile" type="file" accept=".pdf,.txt,.csv,.md,.json,.doc,.docx"></div><button class="btn ghost" onclick="learnFromFile()">Leer y aprender</button><div class="field"><label>Pregunta o palabra clave</label><input id="learnKey" placeholder="Ej. quién resuelve documentos de auditoría"></div><div class="field"><label>Respuesta esperada</label><textarea id="learnAnswer" placeholder="Escribe cómo debe responder el bot"></textarea></div><button class="btn gold" onclick="manualLearn()">Guardar memoria</button><div class="empty">Respuesta limpia para usuario final: sin hablar de código, corpus o detalles técnicos innecesarios.</div></div></div></div>`;
 }
 
 function aiQuickOptionsHtml(){
@@ -7799,6 +7855,314 @@ if(typeof compactInstallMobileMenuButton==='function'){const compactInstallMobil
 const renderAppBeforePc760Final=renderApp;renderApp=function(){renderAppBeforePc760Final();pcRemoveMobileDrawersOnDesktop();const main=document.querySelector('.main');if(main){main.querySelectorAll('.app-author-footer').forEach(el=>el.remove());main.insertAdjacentHTML('beforeend',pcAuthorFooterHtml());}};
 const renderViewBeforePc760Final=typeof renderView==='function'?renderView:null;if(renderViewBeforePc760Final){renderView=function(){renderViewBeforePc760Final();pcRemoveMobileDrawersOnDesktop();};}
 window.addEventListener('DOMContentLoaded',()=>setTimeout(pcRemoveMobileDrawersOnDesktop,80));window.addEventListener('resize',()=>setTimeout(pcRemoveMobileDrawersOnDesktop,80));
+
+
+/* =========================================================
+   ROLES Y DESIGNACIÓN AUTOMÁTICA FINAL
+   ========================================================= */
+(function(){
+  const TEAM_ROLE_RULES={
+    juanEsteban:{match:["juan esteban perez","juan esteban pérez","juan e. perez","juan e. pérez"],role:"Analista de Calidad y Mejoramiento Continuo",scope:"Calidad y mejora continua"},
+    juanCamilo:{match:["juan camilo montoya"],role:"Analista de Calidad y Mejoramiento Continuo",scope:"Calidad y mejora continua"},
+    luis:{match:["luis grisales","luis grajales"],role:"Analista de auditoría",scope:"Auditorías generales"},
+    yessica:{match:["yessica castro"],role:"Jefe de auditoría y calidad",scope:"Casos urgentes, críticos o de alto impacto"},
+    maria:{match:["maria fernanda zamudio","maría fernanda zamudio"],remove:true}
+  };
+
+  function norm(v){
+    return String(v||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().trim();
+  }
+
+  function userKey(u){
+    const n=norm(u?.name);
+    for(const key of Object.keys(TEAM_ROLE_RULES)){
+      const r=TEAM_ROLE_RULES[key];
+      if(r.match.some(m=>n.includes(norm(m))))return key;
+    }
+    return "";
+  }
+
+  function isMaria(u){return userKey(u)==="maria";}
+
+  function normalizeUser(u){
+    const key=userKey(u);
+    if(key==="juanEsteban" || key==="juanCamilo"){
+      return {...u,role:"Analista de Calidad y Mejoramiento Continuo",active:true,statusText:"Disponible"};
+    }
+    if(key==="luis"){
+      return {...u,name:"Luis Grisales",role:"Analista de auditoría",active:true,statusText:"Disponible"};
+    }
+    if(key==="yessica"){
+      return {...u,role:"Jefe de auditoría y calidad",active:true,statusText:"Disponible"};
+    }
+    return u;
+  }
+
+  function normalizeUsers(list){
+    return (list||[]).filter(u=>!isMaria(u)).map(normalizeUser);
+  }
+
+  function openLoad(userId){
+    return (window.state?.tickets||[]).filter(t=>{
+      const st=norm(t.status);
+      const closed=["cerrada","resuelta","finalizada","cancelada","closed","done"];
+      return t.assignedTo===userId && !closed.some(x=>st.includes(x));
+    }).length;
+  }
+
+  function teamByKey(key){
+    return normalizeUsers(window.state?.users||[]).find(u=>userKey(u)===key && u.active!==false);
+  }
+
+  function qualityPool(){
+    return normalizeUsers(window.state?.users||[]).filter(u=>["juanEsteban","juanCamilo"].includes(userKey(u)) && u.active!==false);
+  }
+
+  function pickBalancedQualityAnalyst(){
+    const pool=qualityPool();
+    if(!pool.length){
+      const r=(typeof responders==="function"?responders():[])[0];
+      return r?.id || window.state?.user?.id || "";
+    }
+    const rows=pool.map(u=>({u,load:openLoad(u.id)})).sort((a,b)=>a.load-b.load);
+    const min=rows[0].load;
+    const candidates=rows.filter(x=>x.load===min);
+    return candidates[Math.floor(Math.random()*candidates.length)].u.id;
+  }
+
+  function isAudit(text,category){
+    const all=norm([text,category].join(" "));
+    return /auditoria|auditoría|audit|hallazgo|no conformidad|accion correctiva|acción correctiva|plan de auditoria|programa de auditoria|informe de auditoria|auditor/.test(all);
+  }
+
+  function isUrgentAudit(text,category,priority){
+    const all=norm([text,category,priority].join(" "));
+    return /urgente|critico|critica|crucial|grave|alto impacto|inmediato|incumplimiento|hallazgo mayor|riesgo alto|auditoria urgente|auditoria critica|prioridad alta|alta/.test(all);
+  }
+
+  function isQualityImprovement(text,category){
+    const all=norm([text,category].join(" "));
+    return /calidad|mejora|mejoramiento|procedimiento|documento|formato|instructivo|proceso|indicador|kpi|gestion documental|gestión documental|caracterizacion|caracterización|mapa de procesos|pqrs|pqrsd|capacitacion|capacitación/.test(all);
+  }
+
+  window.suggestAssignee=function(category="",priority="Media",text=""){
+    const content=[category,priority,text].join(" ");
+    const yessica=teamByKey("yessica");
+    const luis=teamByKey("luis");
+
+    if(isAudit(content,category)){
+      if(isUrgentAudit(content,category,priority) && yessica)return yessica.id;
+      if(luis)return luis.id;
+    }
+
+    if(isQualityImprovement(content,category) || !isAudit(content,category)){
+      const balanced=pickBalancedQualityAnalyst();
+      if(balanced)return balanced;
+    }
+
+    return pickBalancedQualityAnalyst() || luis?.id || yessica?.id || "";
+  };
+
+  if(typeof listRecords==="function"){
+    const listRecordsBeforeTeamQA=listRecords;
+    window.listRecords=async function(table){
+      const rows=await listRecordsBeforeTeamQA(table);
+      if(table===tables.users)return normalizeUsers(rows);
+      return rows;
+    };
+  }
+
+  window.responders=function(){
+    return normalizeUsers(window.state?.users||[]).filter(u=>u.active!==false && u.role!=="Solicitante");
+  };
+
+  window.hasLead=function(){
+    const key=userKey(window.state?.user);
+    return key==="yessica" || /super admin|desarrollador|administrador/i.test(window.state?.user?.role||"");
+  };
+
+  if(typeof submitTicket==="function"){
+    const submitTicketBeforeTeamQA=submitTicket;
+    window.submitTicket=async function(e){
+      const form=e?.target || document.getElementById("ticketForm");
+      if(form){
+        const title=form.elements?.title?.value||"";
+        const desc=form.elements?.description?.value||"";
+        const cat=form.elements?.category?.value||"";
+        const pri=form.elements?.priority?.value||"Media";
+        const assigned=window.suggestAssignee(cat,pri,[title,desc].join(" "));
+        if(form.elements?.assignedTo && assigned)form.elements.assignedTo.value=assigned;
+      }
+      return submitTicketBeforeTeamQA(e);
+    };
+  }
+
+  if(typeof createTicketDirectFromDraft==="function"){
+    const createTicketDirectFromDraftBeforeTeamQA=createTicketDirectFromDraft;
+    window.createTicketDirectFromDraft=async function(draft,source="IA"){
+      draft.assignedTo=window.suggestAssignee(draft.category||"",draft.priority||"Media",[draft.title||"",draft.description||""].join(" "));
+      return createTicketDirectFromDraftBeforeTeamQA(draft,source);
+    };
+  }
+
+  function assignmentModuleHtml(){
+    const je=teamByKey("juanEsteban");
+    const jc=teamByKey("juanCamilo");
+    const lg=teamByKey("luis");
+    const yc=teamByKey("yessica");
+    const card=(u,scope)=>u?`<div class="assignment-card"><strong>${escapeHtml(u.name)}</strong><span>${escapeHtml(u.role)}</span><span>${escapeHtml(scope)}</span><em>${openLoad(u.id)} solicitudes activas</em></div>`:"";
+    return `<section class="assignment-panel">
+      <h3>Designación de solicitudes</h3>
+      <div class="assignment-grid">
+        ${card(je,"Calidad y mejora continua · balanceado por carga")}
+        ${card(jc,"Calidad y mejora continua · balanceado por carga")}
+        ${card(lg,"Auditorías generales")}
+        ${card(yc,"Urgente, crucial o de alto impacto")}
+      </div>
+    </section>`;
+  }
+
+  const renderViewBeforeTeamQA=typeof renderView==="function"?renderView:null;
+  if(renderViewBeforeTeamQA){
+    window.renderView=function(){
+      renderViewBeforeTeamQA();
+      if(["team","kpis","dashboard"].includes(window.state?.view)){
+        const view=document.getElementById("view");
+        if(view && !view.querySelector(".assignment-panel"))view.insertAdjacentHTML("beforeend",assignmentModuleHtml());
+      }
+      cleanAiText();
+    };
+  }
+
+  function cleanAiText(){
+    const replacements=[
+      ["Seguimiento general de solicitudes, tiempos y estados.","Seguimiento general de solicitudes, tiempos y estados."],
+      ["Resumen de solicitudes y tiempos.","Resumen de solicitudes y tiempos."],
+      ["Consulta solicitudes, responsables y estados.","Consulta solicitudes, responsables y estados."],
+      ["Detalle de la solicitud y su trazabilidad.","Detalle de la solicitud y su trazabilidad."],
+      ["Registra y consulta solicitudes de calidad.","Registra y consulta solicitudes de calidad."],
+      ["Indicadores de solicitudes y tiempos.","Indicadores de solicitudes y tiempos."],
+      ["Asistente para orientar solicitudes y respuestas.","Asistente para orientar solicitudes y respuestas."],
+      ["Juegos de apoyo para el aprendizaje.","Juegos de apoyo para el aprendizaje."]
+    ];
+    if(!document.body)return;
+    const walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);
+    let node;
+    while((node=walker.nextNode())){
+      for(const [a,b] of replacements){
+        if(node.nodeValue.includes(a))node.nodeValue=node.nodeValue.split(a).join(b);
+      }
+    }
+  }
+
+  const renderAppBeforeTeamQA=typeof renderApp==="function"?renderApp:null;
+  if(renderAppBeforeTeamQA){
+    window.renderApp=function(){
+      window.state.users=normalizeUsers(window.state.users||[]);
+      renderAppBeforeTeamQA();
+      setTimeout(cleanAiText,20);
+    };
+  }
+
+  window.addEventListener("DOMContentLoaded",()=>setTimeout(()=>{
+    window.state.users=normalizeUsers(window.state.users||[]);
+    cleanAiText();
+  },120));
+})();
+
+
+/* =========================================================
+   PATCH FINAL ROLES DESIGNACION - prioridad máxima
+   ========================================================= */
+(function(){
+  function n(v){return String(v||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().trim();}
+  function key(u){
+    const s=n(u?.name);
+    if(s.includes("maria fernanda zamudio"))return "maria";
+    if(s.includes("juan esteban perez")||s.includes("juan e. perez"))return "juanEsteban";
+    if(s.includes("juan camilo montoya"))return "juanCamilo";
+    if(s.includes("luis grisales")||s.includes("luis grajales"))return "luis";
+    if(s.includes("yessica castro"))return "yessica";
+    return "";
+  }
+  function normUser(u){
+    const k=key(u);
+    if(k==="juanEsteban"||k==="juanCamilo")return {...u,role:"Analista de Calidad y Mejoramiento Continuo",active:true,statusText:"Disponible"};
+    if(k==="luis")return {...u,name:"Luis Grisales",role:"Analista de auditoría",active:true,statusText:"Disponible"};
+    if(k==="yessica")return {...u,role:"Jefe de auditoría y calidad",active:true,statusText:"Disponible"};
+    return u;
+  }
+  function cleanUsers(list){return (list||[]).filter(u=>key(u)!=="maria").map(normUser);}
+  function load(id){return (state.tickets||[]).filter(t=>t.assignedTo===id&&!/cerrada|resuelta|finalizada|cancelada/i.test(t.status||"")).length;}
+  function byKey(k){return cleanUsers(state.users||[]).find(u=>key(u)===k&&u.active!==false);}
+  function quality(){
+    const p=cleanUsers(state.users||[]).filter(u=>["juanEsteban","juanCamilo"].includes(key(u))&&u.active!==false);
+    if(!p.length)return "";
+    const rows=p.map(u=>({u,load:load(u.id)})).sort((a,b)=>a.load-b.load);
+    const min=rows[0].load;
+    const tied=rows.filter(x=>x.load===min);
+    return tied[Math.floor(Math.random()*tied.length)].u.id;
+  }
+  function audit(text){return /auditoria|auditoría|audit|hallazgo|no conformidad|accion correctiva|acción correctiva|informe de auditoria|programa de auditoria|plan de auditoria/i.test(text||"");}
+  function urgent(text){return /urgente|critico|crítica|critica|crucial|grave|alto impacto|inmediato|incumplimiento|hallazgo mayor|riesgo alto|alta/i.test(text||"");}
+  window.responders=function(){return cleanUsers(state.users||[]).filter(u=>u.active!==false&&u.role!=="Solicitante");};
+  window.hasLead=function(){const k=key(state.user);return k==="yessica"||/super admin|desarrollador|administrador/i.test(state.user?.role||"");};
+  window.suggestAssignee=function(category="",priority="Media",text=""){
+    const all=[category,priority,text].join(" ");
+    const luis=byKey("luis"), yessica=byKey("yessica");
+    if(audit(all)){
+      if(urgent(all)&&yessica)return yessica.id;
+      if(luis)return luis.id;
+    }
+    return quality()||luis?.id||yessica?.id||"";
+  };
+  if(typeof listRecords==="function"&&!window.__rolesListRecordsPatched){
+    window.__rolesListRecordsPatched=true;
+    const prev=listRecords;
+    window.listRecords=async function(table){
+      const r=await prev(table);
+      return table===tables.users?cleanUsers(r):r;
+    };
+  }
+  function assignmentModuleHtml(){
+    const je=byKey("juanEsteban"), jc=byKey("juanCamilo"), lg=byKey("luis"), yc=byKey("yessica");
+    const card=(u,s)=>u?`<div class="assignment-card"><strong>${escapeHtml(u.name)}</strong><span>${escapeHtml(u.role)}</span><span>${escapeHtml(s)}</span><em>${load(u.id)} solicitudes activas</em></div>`:"";
+    return `<section class="assignment-panel"><h3>Designación de solicitudes</h3><div class="assignment-grid">${card(je,"Calidad y mejora continua · balanceado por carga")}${card(jc,"Calidad y mejora continua · balanceado por carga")}${card(lg,"Auditorías generales")}${card(yc,"Urgente, crucial o de alto impacto")}</div></section>`;
+  }
+  if(typeof renderView==="function"&&!window.__rolesRenderViewPatched){
+    window.__rolesRenderViewPatched=true;
+    const prev=renderView;
+    window.renderView=function(){
+      prev();
+      state.users=cleanUsers(state.users||[]);
+      if(["team","kpis","dashboard"].includes(state.view)){
+        const v=document.getElementById("view");
+        if(v&&!v.querySelector(".assignment-panel"))v.insertAdjacentHTML("beforeend",assignmentModuleHtml());
+      }
+    };
+  }
+  if(typeof submitTicket==="function"&&!window.__rolesSubmitPatched){
+    window.__rolesSubmitPatched=true;
+    const prev=submitTicket;
+    window.submitTicket=function(e){
+      const f=e?.target||document.getElementById("ticketForm");
+      if(f?.elements?.assignedTo){
+        const a=suggestAssignee(f.elements.category?.value||"",f.elements.priority?.value||"Media",[f.elements.title?.value||"",f.elements.description?.value||""].join(" "));
+        if(a)f.elements.assignedTo.value=a;
+      }
+      return prev(e);
+    };
+  }
+  if(typeof createTicketDirectFromDraft==="function"&&!window.__rolesIAPatched){
+    window.__rolesIAPatched=true;
+    const prev=createTicketDirectFromDraft;
+    window.createTicketDirectFromDraft=function(draft,source="IA"){
+      draft.assignedTo=suggestAssignee(draft.category||"",draft.priority||"Media",[draft.title||"",draft.description||""].join(" "));
+      return prev(draft,source);
+    };
+  }
+  window.addEventListener("DOMContentLoaded",()=>setTimeout(()=>{state.users=cleanUsers(state.users||[]);},150));
+})();
 
 window.addEventListener('DOMContentLoaded',async()=>{
   prepareIntroStart();
