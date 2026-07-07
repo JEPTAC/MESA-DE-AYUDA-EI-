@@ -3219,31 +3219,41 @@ textarea{
   }
 }
 
+
+/* =========================================================
+   PC 760 FINAL - ESTRUCTURA LIMPIA
+   ========================================================= */
+#compactMobileMenuDrawer,#compactMobileMenuBackdrop,#finalMobileMenuDrawer,#finalMobileMenuBackdrop,#qaMobileMenuDrawer,#qaMobileMenuBackdrop,.mobile-drawer,.mobile-drawer-backdrop,.menu-backdrop{
+  display:none!important;visibility:hidden!important;pointer-events:none!important;position:fixed!important;left:-99999px!important;top:-99999px!important;width:0!important;height:0!important;opacity:0!important;overflow:hidden!important;
+}
+.app-author-footer{margin-top:12px!important;padding:9px 12px!important;border-radius:15px!important;background:#fff!important;border:1px solid rgba(11,59,130,.10)!important;color:#536379!important;font-size:11px!important;line-height:1.35!important;text-align:center!important;box-shadow:0 8px 20px rgba(11,59,130,.05)!important}.app-author-footer strong{color:#0b3b82!important}
+@media(min-width:881px){
+  .app-shell{grid-template-columns:228px minmax(0,1fr)!important;min-height:100vh!important}.sidebar{width:228px!important;padding:14px!important;height:100vh!important;min-height:100vh!important;overflow-y:auto!important;overflow-x:hidden!important}.sidebar .brand{margin-bottom:10px!important}.sidebar .brand img{max-height:48px!important;width:auto!important;object-fit:contain!important}.sidebar .brand small{font-size:10px!important;line-height:1.25!important;margin-top:4px!important}.user-card{padding:10px!important;border-radius:17px!important;margin-bottom:10px!important}.user-card .avatar{display:none!important}.user-name{font-size:12px!important;line-height:1.15!important}.user-role{font-size:10.5px!important;margin-top:3px!important}.user-status{display:none!important}.clean-user-actions{margin-top:8px!important}.clean-logout{min-height:28px!important;padding:5px 9px!important;border-radius:10px!important;font-size:10.5px!important}.nav{gap:5px!important}.nav button{min-height:36px!important;padding:8px 10px!important;border-radius:13px!important;font-size:12px!important}.nav .icon{width:20px!important;font-size:15px!important}.main{padding:12px 14px!important;min-width:0!important}.topbar{margin-bottom:9px!important;padding:0!important}.mobile-menu{display:none!important}.page-title h1{font-size:24px!important;line-height:1.05!important;margin:0!important}.page-title p{display:none!important}.top-actions,.clean-top-actions{display:none!important}.card{padding:12px!important;border-radius:20px!important}.section-title{margin-bottom:9px!important}.section-title h2{font-size:16px!important}.section-title span{font-size:10px!important}.grid{gap:10px!important}.form{gap:9px!important}.field label{font-size:10.5px!important;margin-bottom:4px!important}input,select,textarea{min-height:36px!important;padding:8px 10px!important;border-radius:12px!important;font-size:12px!important}textarea{min-height:64px!important}.btn{min-height:36px!important;padding:8px 11px!important;border-radius:12px!important;font-size:11.5px!important}.compact-request-layout{grid-template-columns:minmax(250px,.82fr) minmax(440px,1.18fr)!important;gap:10px!important;align-items:start!important}.compact-help-card{padding:12px!important;border-radius:20px!important}.compact-help-card h2{font-size:17px!important;margin-bottom:5px!important}.compact-help-card p{font-size:11px!important;line-height:1.35!important;margin-bottom:9px!important}.compact-lookup{margin-top:10px!important;padding-top:10px!important}.advanced-inline{padding:8px!important;border-radius:15px!important}.advanced-inline summary{font-size:11px!important}.clean-send-row{margin-top:0!important}.clean-send-row .btn.primary{min-width:150px!important}.metric .value{font-size:25px!important}.table-wrap{max-height:calc(100vh - 180px)!important;overflow:auto!important}.ai-chat{max-height:310px!important}
+}
+@media(max-width:880px){body.compact-menu-open #compactMobileMenuBackdrop{display:block!important;visibility:visible!important;pointer-events:auto!important;position:fixed!important;left:0!important;top:0!important;width:auto!important;height:auto!important;opacity:1!important;overflow:visible!important}body.compact-menu-open #compactMobileMenuDrawer{display:block!important;visibility:visible!important;pointer-events:auto!important;position:fixed!important;left:0!important;top:0!important;width:min(300px,84vw)!important;height:100dvh!important;opacity:1!important;overflow-y:auto!important}}
+
 </style>
 
   <!-- Iconos APP / iPhone / Navegador -->
 
   <!-- Icono iPhone / Navegador / PWA - versión forzada sin caché -->
-  <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png?v=3">
-  <link rel="apple-touch-icon-precomposed" sizes="180x180" href="./apple-touch-icon-precomposed.png?v=3">
-
-  <link rel="icon" type="image/x-icon" href="./favicon.ico?v=3">
-  <link rel="shortcut icon" href="./favicon.ico?v=3">
-  <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png?v=3">
-  <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png?v=3">
-  <link rel="icon" type="image/png" sizes="192x192" href="./android-chrome-192x192.png?v=3">
-
-  <link rel="manifest" href="./manifest.json?v=3">
-  <link rel="manifest" href="./site.webmanifest?v=3">
-
-  <meta name="application-name" content="Mesa de Ayuda">
-  <meta name="apple-mobile-web-app-title" content="Mesa de Ayuda">
+<meta name="apple-mobile-web-app-title" content="Mesa de Ayuda">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
-  <meta name="theme-color" content="#0b3b82">
-  <meta name="msapplication-TileColor" content="#0b3b82">
+<meta name="msapplication-TileColor" content="#0b3b82">
   <meta name="msapplication-TileImage" content="./android-chrome-192x192.png?v=3">
+
+
+  <!-- Iconos navegador / miniatura / PWA -->
+  <link rel="icon" href="./favicon.ico" sizes="any">
+  <link rel="shortcut icon" href="./favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
+  <link rel="manifest" href="./manifest.json">
+  <meta name="theme-color" content="#0b3b82">
+  <meta name="application-name" content="Mesa de Ayuda">
 
 </head>
 <body>
@@ -7776,6 +7786,19 @@ setView=function(v){
   setViewBeforeFinalCompact(v);
 };
 window.addEventListener("resize",()=>{if(!window.matchMedia("(max-width:880px)").matches)closeCompactMobileMenu();});
+
+
+/* =========================================================
+   PC 760 FINAL - FIX DRAWER AL FINAL + FOOTER AUTOR
+   ========================================================= */
+function pcIsMobile(){return window.matchMedia('(max-width:880px)').matches;}
+function pcRemoveMobileDrawersOnDesktop(){if(!pcIsMobile()){document.body.classList.remove('compact-menu-open','final-menu-open','qa-menu-open');document.querySelectorAll('#compactMobileMenuDrawer,#compactMobileMenuBackdrop,#finalMobileMenuDrawer,#finalMobileMenuBackdrop,#qaMobileMenuDrawer,#qaMobileMenuBackdrop,.mobile-drawer,.mobile-drawer-backdrop,.menu-backdrop').forEach(el=>el.remove());}}
+function pcAuthorFooterHtml(){return `<footer class="app-author-footer"><strong>Desarrollado por: Juan Esteban Pérez</strong> · Analista de Calidad y Mejora Continua</footer>`;}
+if(typeof compactBuildMobileMenu==='function'){const compactBuildMobileMenuBeforePc760=compactBuildMobileMenu;compactBuildMobileMenu=function(){if(!pcIsMobile()){pcRemoveMobileDrawersOnDesktop();return;}return compactBuildMobileMenuBeforePc760();};}
+if(typeof compactInstallMobileMenuButton==='function'){const compactInstallMobileMenuButtonBeforePc760=compactInstallMobileMenuButton;compactInstallMobileMenuButton=function(){if(!pcIsMobile())return;return compactInstallMobileMenuButtonBeforePc760();};}
+const renderAppBeforePc760Final=renderApp;renderApp=function(){renderAppBeforePc760Final();pcRemoveMobileDrawersOnDesktop();const main=document.querySelector('.main');if(main){main.querySelectorAll('.app-author-footer').forEach(el=>el.remove());main.insertAdjacentHTML('beforeend',pcAuthorFooterHtml());}};
+const renderViewBeforePc760Final=typeof renderView==='function'?renderView:null;if(renderViewBeforePc760Final){renderView=function(){renderViewBeforePc760Final();pcRemoveMobileDrawersOnDesktop();};}
+window.addEventListener('DOMContentLoaded',()=>setTimeout(pcRemoveMobileDrawersOnDesktop,80));window.addEventListener('resize',()=>setTimeout(pcRemoveMobileDrawersOnDesktop,80));
 
 window.addEventListener('DOMContentLoaded',async()=>{
   prepareIntroStart();
