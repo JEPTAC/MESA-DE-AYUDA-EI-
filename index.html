@@ -5,8 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Mesa de Ayuda de Calidad</title>
 <link rel="preconnect" href="https://cdn.jsdelivr.net">
-<link rel="preload" href="assets/intro_bg.mp4" as="video" type="video/mp4">
-<link rel="preload" href="assets/intro_logo.mp3" as="audio" type="audio/mpeg">
 <link rel="preload" href="assets/intro_pointer.gif" as="image">
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -7093,12 +7091,12 @@ window.addEventListener("DOMContentLoaded",()=>ensureMobileDrawerReal());
       document.body.appendChild(drawer);
     }
 
-    const currentView=window.state?.view || "create";
-    const avatar=window.state?.user?.avatar || window.assets?.fun || "";
-    const logo=window.assets?.logo || "";
-    const fallback=window.assets?.fun || "";
-    const userName=window.state?.user?.name || "Solicitante general";
-    const userRole=window.state?.user?.role || "Solicitante";
+    const currentView=state?.view || "create";
+    const avatar=state?.user?.avatar || assets?.fun || "";
+    const logo=assets?.logo || "";
+    const fallback=assets?.fun || "";
+    const userName=state?.user?.name || "Solicitante general";
+    const userRole=state?.user?.role || "Solicitante";
 
     drawer.innerHTML = `
       <div class="qa-menu-head">
@@ -7903,7 +7901,7 @@ window.addEventListener('DOMContentLoaded',()=>setTimeout(pcRemoveMobileDrawersO
   }
 
   function openLoad(userId){
-    return (window.state?.tickets||[]).filter(t=>{
+    return (state?.tickets||[]).filter(t=>{
       const st=norm(t.status);
       const closed=["cerrada","resuelta","finalizada","cancelada","closed","done"];
       return t.assignedTo===userId && !closed.some(x=>st.includes(x));
@@ -7911,18 +7909,18 @@ window.addEventListener('DOMContentLoaded',()=>setTimeout(pcRemoveMobileDrawersO
   }
 
   function teamByKey(key){
-    return normalizeUsers(window.state?.users||[]).find(u=>userKey(u)===key && u.active!==false);
+    return normalizeUsers(state?.users||[]).find(u=>userKey(u)===key && u.active!==false);
   }
 
   function qualityPool(){
-    return normalizeUsers(window.state?.users||[]).filter(u=>["juanEsteban","juanCamilo"].includes(userKey(u)) && u.active!==false);
+    return normalizeUsers(state?.users||[]).filter(u=>["juanEsteban","juanCamilo"].includes(userKey(u)) && u.active!==false);
   }
 
   function pickBalancedQualityAnalyst(){
     const pool=qualityPool();
     if(!pool.length){
       const r=(typeof responders==="function"?responders():[])[0];
-      return r?.id || window.state?.user?.id || "";
+      return r?.id || state?.user?.id || "";
     }
     const rows=pool.map(u=>({u,load:openLoad(u.id)})).sort((a,b)=>a.load-b.load);
     const min=rows[0].load;
@@ -7973,12 +7971,12 @@ window.addEventListener('DOMContentLoaded',()=>setTimeout(pcRemoveMobileDrawersO
   }
 
   window.responders=function(){
-    return normalizeUsers(window.state?.users||[]).filter(u=>u.active!==false && u.role!=="Solicitante");
+    return normalizeUsers(state?.users||[]).filter(u=>u.active!==false && u.role!=="Solicitante");
   };
 
   window.hasLead=function(){
-    const key=userKey(window.state?.user);
-    return key==="yessica" || /super admin|desarrollador|administrador/i.test(window.state?.user?.role||"");
+    const key=userKey(state?.user);
+    return key==="yessica" || /super admin|desarrollador|administrador/i.test(state?.user?.role||"");
   };
 
   if(typeof submitTicket==="function"){
@@ -8026,7 +8024,7 @@ window.addEventListener('DOMContentLoaded',()=>setTimeout(pcRemoveMobileDrawersO
   if(renderViewBeforeTeamQA){
     window.renderView=function(){
       renderViewBeforeTeamQA();
-      if(["team","kpis","dashboard"].includes(window.state?.view)){
+      if(["team","kpis","dashboard"].includes(state?.view)){
         const view=document.getElementById("view");
         if(view && !view.querySelector(".assignment-panel"))view.insertAdjacentHTML("beforeend",assignmentModuleHtml());
       }
@@ -8058,14 +8056,14 @@ window.addEventListener('DOMContentLoaded',()=>setTimeout(pcRemoveMobileDrawersO
   const renderAppBeforeTeamQA=typeof renderApp==="function"?renderApp:null;
   if(renderAppBeforeTeamQA){
     window.renderApp=function(){
-      window.state.users=normalizeUsers(window.state.users||[]);
+      state.users=normalizeUsers(state.users||[]);
       renderAppBeforeTeamQA();
       setTimeout(cleanAiText,20);
     };
   }
 
   window.addEventListener("DOMContentLoaded",()=>setTimeout(()=>{
-    window.state.users=normalizeUsers(window.state.users||[]);
+    state.users=normalizeUsers(state.users||[]);
     cleanAiText();
   },120));
 })();
@@ -8162,6 +8160,18 @@ window.addEventListener('DOMContentLoaded',()=>setTimeout(pcRemoveMobileDrawersO
     };
   }
   window.addEventListener("DOMContentLoaded",()=>setTimeout(()=>{state.users=cleanUsers(state.users||[]);},150));
+})();
+
+
+/* =========================================================
+   QA RUNTIME FIX: state interno, no window.state
+   ========================================================= */
+(function(){
+  try{
+    if(typeof state!=="undefined"){
+      window.__mesaStateReady=true;
+    }
+  }catch(e){}
 })();
 
 window.addEventListener('DOMContentLoaded',async()=>{
