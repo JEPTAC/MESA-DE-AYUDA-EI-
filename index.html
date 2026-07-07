@@ -2741,6 +2741,484 @@ body.create-mobile-compact{
   }
 }
 
+
+/* =========================================================
+   QA FINAL COMPACTO 760PX
+   Limpieza visual definitiva:
+   - Sin GIFs decorativos.
+   - Sin imagen flotante ni botón IA flotante.
+   - Sin estado técnico Supabase visible.
+   - Sin footers superpuestos.
+   - Formulario compacto para pantallas de 760px de alto.
+   ========================================================= */
+.float-ai,
+.popup-gif,
+.mode-pill,
+.side-footer,
+.qa-menu-status,
+.mobile-drawer,
+.mobile-drawer-backdrop,
+.menu-backdrop,
+#qaMobileMenuDrawer,
+#qaMobileMenuBackdrop,
+#finalMobileMenuDrawer,
+#finalMobileMenuBackdrop{
+  display:none!important;
+  visibility:hidden!important;
+  pointer-events:none!important;
+}
+
+.popup-layout{
+  display:block!important;
+  text-align:left!important;
+}
+
+.popup-layout img{
+  display:none!important;
+}
+
+.sidebar{
+  display:flex!important;
+  flex-direction:column!important;
+  height:100vh!important;
+  min-height:100vh!important;
+  overflow-y:auto!important;
+  overflow-x:hidden!important;
+  padding:20px!important;
+}
+
+.sidebar .brand{
+  margin-bottom:14px!important;
+}
+
+.sidebar .brand img{
+  max-height:58px!important;
+  object-fit:contain!important;
+}
+
+.user-card{
+  padding:12px!important;
+  border-radius:20px!important;
+  margin-bottom:14px!important;
+  display:block!important;
+}
+
+.user-card .avatar{
+  display:none!important;
+}
+
+.user-name{
+  font-size:13px!important;
+}
+
+.user-role,
+.user-status{
+  font-size:11px!important;
+}
+
+.clean-user-actions{
+  margin-top:9px!important;
+  display:flex!important;
+  gap:8px!important;
+}
+
+.clean-refresh,
+.clean-logout{
+  min-height:30px!important;
+  padding:6px 10px!important;
+  border-radius:12px!important;
+  font-size:11px!important;
+}
+
+.clean-refresh{
+  display:none!important;
+}
+
+.nav{
+  gap:6px!important;
+}
+
+.nav button{
+  min-height:42px!important;
+  padding:10px 11px!important;
+  border-radius:15px!important;
+  font-size:13px!important;
+}
+
+.main{
+  padding:18px!important;
+}
+
+.topbar{
+  margin-bottom:12px!important;
+  gap:12px!important;
+}
+
+.page-title h1{
+  font-size:clamp(23px,3vw,34px)!important;
+  line-height:1.05!important;
+}
+
+.page-title p{
+  margin-top:4px!important;
+  font-size:12px!important;
+  line-height:1.35!important;
+}
+
+.clean-top-actions,
+.top-actions{
+  display:none!important;
+}
+
+.card{
+  padding:15px!important;
+  border-radius:22px!important;
+}
+
+.section-title{
+  margin-bottom:10px!important;
+}
+
+.section-title h2{
+  font-size:17px!important;
+}
+
+.section-title span{
+  font-size:10px!important;
+}
+
+.form{
+  gap:10px!important;
+}
+
+.field label{
+  font-size:11px!important;
+  margin-bottom:5px!important;
+}
+
+input,select,textarea{
+  min-height:40px!important;
+  padding:10px 11px!important;
+  border-radius:14px!important;
+  font-size:13px!important;
+}
+
+textarea{
+  min-height:86px!important;
+}
+
+.btn{
+  min-height:40px!important;
+  padding:9px 12px!important;
+  border-radius:14px!important;
+  font-size:12px!important;
+}
+
+.grid{
+  gap:12px!important;
+}
+
+.compact-request-layout{
+  display:grid!important;
+  grid-template-columns:minmax(0,.95fr) minmax(320px,1.05fr)!important;
+  gap:12px!important;
+  align-items:start!important;
+}
+
+.compact-help-card{
+  background:linear-gradient(135deg,#ffffff,#f7fbff)!important;
+  border:1px solid rgba(11,59,130,.11)!important;
+  border-radius:22px!important;
+  padding:15px!important;
+  box-shadow:0 12px 26px rgba(11,59,130,.07)!important;
+}
+
+.compact-help-card h2{
+  margin:0 0 6px!important;
+  color:#0b3b82!important;
+  font-size:19px!important;
+}
+
+.compact-help-card p{
+  margin:0 0 11px!important;
+  color:#536379!important;
+  font-size:12px!important;
+  line-height:1.45!important;
+}
+
+.compact-help-card .btn{
+  width:100%!important;
+  justify-content:center!important;
+}
+
+.compact-lookup{
+  margin-top:12px!important;
+  padding-top:12px!important;
+  border-top:1px solid rgba(11,59,130,.09)!important;
+}
+
+.advanced-inline{
+  border:1px solid rgba(11,59,130,.10)!important;
+  border-radius:18px!important;
+  padding:10px!important;
+  background:#fbfdff!important;
+}
+
+.advanced-inline summary{
+  cursor:pointer!important;
+  font-size:12px!important;
+  font-weight:900!important;
+  color:#0b3b82!important;
+}
+
+.advanced-inline .grid{
+  margin-top:10px!important;
+}
+
+.clean-send-row{
+  display:flex!important;
+  justify-content:flex-end!important;
+  gap:8px!important;
+  margin-top:2px!important;
+}
+
+.clean-send-row .btn.primary{
+  min-width:170px!important;
+  justify-content:center!important;
+}
+
+#qualityPreview,
+.simple-quality-zone,
+.guided-pill-row,
+.simple-submit-note,
+.mini-note{
+  display:none!important;
+}
+
+.ai-layout{
+  gap:12px!important;
+}
+
+.ai-mode-note{
+  display:none!important;
+}
+
+.ai-chat{
+  max-height:360px!important;
+}
+
+@media(max-height:780px){
+  .sidebar{padding:16px!important}
+  .sidebar .brand small{display:none!important}
+  .user-card{margin-bottom:10px!important}
+  .nav button{min-height:38px!important;padding:8px 10px!important}
+  .main{padding:12px!important}
+  .topbar{margin-bottom:9px!important}
+  .page-title h1{font-size:24px!important}
+  .page-title p{display:none!important}
+  .card{padding:12px!important}
+  textarea{min-height:72px!important}
+  .compact-help-card{padding:12px!important}
+  .compact-help-card h2{font-size:17px!important}
+}
+
+@media(max-width:980px){
+  .compact-request-layout{
+    grid-template-columns:1fr!important;
+  }
+}
+
+@media(max-width:880px){
+  .sidebar,#sidebar{
+    display:none!important;
+    visibility:hidden!important;
+    pointer-events:none!important;
+    width:0!important;
+    height:0!important;
+  }
+
+  .app-shell{
+    display:block!important;
+    grid-template-columns:1fr!important;
+  }
+
+  .main{
+    width:100%!important;
+    padding:9px 9px calc(18px + env(safe-area-inset-bottom))!important;
+  }
+
+  .topbar{
+    display:grid!important;
+    grid-template-columns:42px 1fr!important;
+    align-items:center!important;
+    padding:8px!important;
+    border-radius:20px!important;
+    background:#fff!important;
+    border:1px solid rgba(11,59,130,.10)!important;
+    box-shadow:0 8px 22px rgba(11,59,130,.06)!important;
+  }
+
+  .mobile-menu{
+    display:inline-flex!important;
+    width:42px!important;
+    height:42px!important;
+    min-width:42px!important;
+    min-height:42px!important;
+    align-items:center!important;
+    justify-content:center!important;
+    border-radius:15px!important;
+  }
+
+  .page-title h1{
+    font-size:20px!important;
+    margin:0!important;
+  }
+
+  .page-title p{
+    display:none!important;
+  }
+
+  #compactMobileMenuBackdrop{
+    position:fixed!important;
+    inset:0!important;
+    z-index:2147483500!important;
+    background:rgba(3,22,45,.38)!important;
+    opacity:0!important;
+    visibility:hidden!important;
+    pointer-events:none!important;
+    transition:opacity .18s ease, visibility .18s ease!important;
+  }
+
+  #compactMobileMenuDrawer{
+    position:fixed!important;
+    top:0!important;
+    left:0!important;
+    bottom:0!important;
+    width:min(300px,84vw)!important;
+    height:100dvh!important;
+    z-index:2147483600!important;
+    transform:translateX(-110%)!important;
+    transition:transform .22s ease!important;
+    background:#fff!important;
+    color:#0b3b82!important;
+    border-radius:0 24px 24px 0!important;
+    box-shadow:28px 0 70px rgba(3,22,45,.25)!important;
+    padding:16px 12px calc(16px + env(safe-area-inset-bottom))!important;
+    overflow-y:auto!important;
+    -webkit-overflow-scrolling:touch!important;
+  }
+
+  body.compact-menu-open{
+    overflow:hidden!important;
+  }
+
+  body.compact-menu-open #compactMobileMenuBackdrop{
+    opacity:1!important;
+    visibility:visible!important;
+    pointer-events:auto!important;
+  }
+
+  body.compact-menu-open #compactMobileMenuDrawer{
+    transform:translateX(0)!important;
+  }
+
+  .compact-menu-head{
+    padding:0 4px 12px!important;
+    border-bottom:1px solid rgba(11,59,130,.10)!important;
+    margin-bottom:10px!important;
+  }
+
+  .compact-menu-head img{
+    width:126px!important;
+    max-width:75%!important;
+    height:auto!important;
+    display:block!important;
+    margin:0 auto 6px!important;
+  }
+
+  .compact-menu-head small{
+    display:block!important;
+    text-align:center!important;
+    font-size:11px!important;
+    color:#536379!important;
+    line-height:1.35!important;
+  }
+
+  .compact-menu-user{
+    padding:10px!important;
+    margin-bottom:10px!important;
+    border-radius:18px!important;
+    background:#f7fbff!important;
+    border:1px solid rgba(11,59,130,.10)!important;
+  }
+
+  .compact-menu-user strong{
+    display:block!important;
+    font-size:13px!important;
+    color:#0b3b82!important;
+  }
+
+  .compact-menu-user span{
+    display:block!important;
+    font-size:11px!important;
+    color:#60738f!important;
+    margin-top:3px!important;
+  }
+
+  .compact-menu-user button{
+    margin-top:8px!important;
+    min-height:30px!important;
+    padding:6px 10px!important;
+    border-radius:12px!important;
+    background:#fff1f2!important;
+    color:#be123c!important;
+    border:1px solid #fecdd3!important;
+    font-size:11px!important;
+    font-weight:900!important;
+  }
+
+  .compact-menu-nav{
+    display:grid!important;
+    gap:7px!important;
+  }
+
+  .compact-menu-nav button{
+    width:100%!important;
+    min-height:46px!important;
+    display:flex!important;
+    align-items:center!important;
+    gap:10px!important;
+    text-align:left!important;
+    border-radius:16px!important;
+    padding:10px 12px!important;
+    background:#f7fbff!important;
+    color:#0b3b82!important;
+    border:1px solid rgba(11,59,130,.10)!important;
+    font-size:13px!important;
+    font-weight:900!important;
+  }
+
+  .compact-menu-nav button.active{
+    background:linear-gradient(135deg,#0b3b82,#0d5bd2)!important;
+    color:#fff!important;
+  }
+
+  .compact-request-layout{
+    grid-template-columns:1fr!important;
+    gap:10px!important;
+  }
+
+  .compact-help-card{
+    order:-1!important;
+  }
+
+  .grid.cols-2,
+  .grid.cols-3,
+  .grid.cols-4{
+    grid-template-columns:1fr!important;
+  }
+}
+
 </style>
 
   <!-- Iconos APP / iPhone / Navegador -->
@@ -7028,6 +7506,276 @@ setView=function(v){
 };
 
 window.addEventListener("resize",()=>{if(!window.matchMedia("(max-width:880px)").matches)closeFinalMobileMenu();});
+
+
+/* =========================================================
+   QA FINAL COMPACTO
+   ========================================================= */
+function cleanSimplePopup(title,text){
+  Swal.fire({
+    html:`<div class="popup-layout"><div><h3>${escapeHtml(title||"Información")}</h3><p>${escapeHtml(text||"")}</p></div></div>`,
+    showConfirmButton:true,
+    confirmButtonText:"Entendido",
+    confirmButtonColor:"#0d5bd2",
+    background:"#ffffff"
+  });
+}
+popup=function(title,text,gif){cleanSimplePopup(title,text);};
+randomSentGif=function(){return "";};
+
+function compactNavHtml(){
+  if(!isInternal()){
+    return `${navButton('create','📝','Radicar / consultar')}${navButton('ai','🤖','IA Calidad')}${navButton('game','🎮','Juegos IA')}`;
+  }
+  return `${navButton('dashboard','🏠','Inicio')}${navButton('tickets','🎫','Solicitudes')}${navButton('create','📝','Nueva solicitud')}${hasLead()?navButton('kpis','📊','KPIs'):''}${hasLead()?navButton('team','🛠️','Equipo'):''}${navButton('ai','🤖','IA Calidad')}${navButton('game','🎮','Juegos IA')}`;
+}
+
+renderApp=function(){
+  const app=document.getElementById("app");
+  app.innerHTML=`<div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand"><img src="${assets.logo}" alt="Dream Team de Calidad"><small>Mesa de ayuda de calidad y mejoramiento continuo.</small></div>
+      <div class="user-card">
+        <div>
+          <div class="user-name">${escapeHtml(state.user.name)}</div>
+          <div class="user-role">${escapeHtml(state.user.role)}</div>
+          <div class="user-status">${escapeHtml(state.user.statusText||'Disponible')}</div>
+          <div class="clean-user-actions"><button class="clean-logout" onclick="logout()">Salir</button></div>
+        </div>
+      </div>
+      <nav class="nav">${compactNavHtml()}</nav>
+    </aside>
+    <main class="main">
+      <header class="topbar">
+        <button class="mobile-menu" type="button" aria-label="Abrir menú">☰</button>
+        <div class="page-title"><h1>${pageTitle()}</h1><p>${pageSub()}</p></div>
+      </header>
+      <div id="view"></div>
+    </main>
+  </div>`;
+  renderView();
+  compactBuildMobileMenu();
+  compactInstallMobileMenuButton();
+  setTimeout(()=>{
+    if(window.gsap)gsap.from("#view .card, #view .metric, #view .lane",{opacity:0,y:8,duration:.20,stagger:.012,ease:"power2.out"});
+  },20);
+};
+
+function createHtml(){
+  return `<div class="compact-request-layout">
+    <section class="compact-help-card">
+      <h2>Radicación asistida</h2>
+      <p>La IA pregunta lo mínimo necesario y al terminar radica la solicitud directamente, sin pasar por revisión manual.</p>
+      <button class="btn primary" type="button" onclick="startGuidedRadication()">Crear y enviar con IA</button>
+      <div class="compact-lookup">
+        <div class="field"><label>Consultar radicado</label><input id="lookupCode" placeholder="DT-0001"></div>
+        <button class="btn ghost" onclick="lookupTicket()">Buscar</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="section-title"><h2>Registro manual</h2><span>solo datos necesarios</span></div>
+      <form class="form" id="ticketForm">
+        <div class="grid cols-2">
+          <div class="field"><label>Solicitante</label><input name="requesterName" required value="${state.user.role==='Solicitante'?'':escapeHtml(state.user.name)}"></div>
+          <div class="field"><label>Correo de seguimiento</label><input name="requesterEmail" type="email" placeholder="correo@empresa.com"></div>
+        </div>
+        <div class="field"><label>Área / proceso</label><input name="requesterArea" required placeholder="Ej. Logística, ventas, cartera"></div>
+        <div class="field"><label>Asunto</label><input name="title" required placeholder="Resume la necesidad"></div>
+        <div class="field"><label>Descripción</label><textarea name="description" required placeholder="Qué necesitas, por qué se solicita y resultado esperado"></textarea></div>
+        <details class="advanced-inline">
+          <summary>Clasificación avanzada</summary>
+          <div class="grid cols-2">
+            <div class="field"><label>Responsable</label><select name="assignedTo" required>${responders().map(u=>`<option value="${u.id}">${escapeHtml(u.name)} · ${escapeHtml(u.role)}</option>`).join("")}</select></div>
+            <div class="field"><label>Categoría</label><select name="category">${categories.map(c=>`<option>${c}</option>`).join("")}</select></div>
+          </div>
+          <div class="grid cols-2">
+            <div class="field"><label>Prioridad</label><select name="priority">${priorities.map(p=>`<option ${p==='Media'?'selected':''}>${p}</option>`).join("")}</select></div>
+            <div class="field"><label>Modalidad</label><select name="modality"><option>Documental</option><option>Presencial</option><option>Mixta</option></select></div>
+          </div>
+        </details>
+        <div class="grid cols-2">
+          <div class="field"><label>Evidencia / enlace opcional</label><input name="evidence" placeholder="Drive, PDF, imagen, acta"></div>
+          <div class="field"><label>Adjuntos</label><input id="ticketAttachments" type="file" multiple accept=".pdf,.doc,.docx,.xls,.xlsx,.csv,.png,.jpg,.jpeg,.webp,.txt"></div>
+        </div>
+        <input type="hidden" name="priorityCode" value="">
+        <div class="clean-send-row"><button class="btn primary" type="submit">Enviar solicitud</button></div>
+      </form>
+    </section>
+  </div>`;
+}
+
+async function createTicketDirectFromDraft(draft,source="IA"){
+  const ticketId=uid("ticket");
+  const email=String(draft.requesterEmail||"").trim();
+  const category=draft.category||"Consulta general";
+  const priority=draft.priority||"Media";
+  const modality=draft.modality||"Mixta";
+  const ticket={
+    id:ticketId,
+    code:"DT-"+String(maxTicketCode()+1).padStart(4,"0"),
+    requesterName:draft.requesterName||state.user?.name||"Solicitante general",
+    requesterEmail:email,
+    requesterArea:draft.requesterArea||"No informado",
+    assignedTo:draft.assignedTo||suggestAssignee(category,priority),
+    category,
+    priority,
+    modality,
+    title:draft.title||makeTitleFromText(draft.description||"Solicitud",category),
+    description:draft.description||"Solicitud creada con asistencia de IA.",
+    evidence:draft.evidenceHint||"",
+    attachments:[],
+    resolutionFiles:[],
+    status:"Enviada",
+    createdBy:state.user?.id||"guest",
+    acceptedAt:null,
+    finishedAt:null,
+    extendedReason:"",
+    chat:[{by:state.user?.name||"Solicitante",text:`Solicitud radicada mediante ${source}.`,at:now()}],
+    timeline:[{label:"Radicación",text:`Solicitud enviada al responsable mediante ${source}.`,at:now()}],
+    created_at:now(),
+    updated_at:now()
+  };
+  try{
+    if(typeof ticketQualityFromObject==="function")ticket.quality=ticketQualityFromObject(ticket);
+    if(typeof slaInfo==="function"){
+      const s=slaInfo(ticket);
+      if(s)ticket.sla={rule:s.rule.label,due:s.due,minutes:s.rule.minutes};
+    }
+  }catch(e){}
+  await saveRecord(tables.tickets,ticket);
+  state.tickets=await listRecords(tables.tickets);
+  state.selectedTicketId=ticket.id;
+  state.selectedTicket=ticket;
+  state.view="detail";
+  try{playSound(sounds.created)}catch(e){}
+  renderApp();
+  toast(`Solicitud enviada: ${ticket.code}`);
+  setTimeout(()=>sendTicketEmailAutomatic(ticket,"created",true).then(r=>{if(r.ok)toast("Comprobante enviado al correo")}),500);
+  Swal.fire({
+    title:"Solicitud enviada",
+    html:`<div class="wizard-summary"><p>Radicado generado: <strong>${escapeHtml(ticket.code)}</strong>.</p><p>La solicitud quedó asignada a <strong>${escapeHtml(userName(ticket.assignedTo))}</strong>.</p></div>`,
+    confirmButtonText:"Entendido",
+    confirmButtonColor:"#0d5bd2"
+  });
+  return ticket;
+}
+
+startGuidedRadication=async function(fromOffer=false){
+  const current=typeof guidedCurrentFormData==="function"?guidedCurrentFormData():{};
+  const data={};
+
+  if(state.user?.role==="Solicitante"){
+    data.requesterName=await guidedAskStep({title:"Solicitante",text:"Escribe tu nombre completo.",placeholder:"Nombre completo",value:current.requesterName});
+    if(data.requesterName===null)return;
+    data.requesterEmail=await guidedAskStep({title:"Correo de seguimiento",text:"Escribe el correo donde llegará el comprobante.",placeholder:"correo@empresa.com",value:current.requesterEmail,required:false});
+    if(data.requesterEmail===null)return;
+  }else{
+    data.requesterName=current.requesterName||state.user?.name||"";
+    data.requesterEmail=current.requesterEmail||"";
+  }
+
+  data.area=await guidedAskStep({title:"1 de 5 · Área",text:"¿De qué área o proceso viene la solicitud?",placeholder:"Ej. Logística, ventas, cartera",value:current.requesterArea});
+  if(data.area===null)return;
+  data.need=await guidedAskStep({title:"2 de 5 · Necesidad",text:"Cuéntame qué necesitas o qué problema ocurrió.",input:"textarea",placeholder:"Describe la necesidad",value:current.description||current.title});
+  if(data.need===null)return;
+  data.caseType=await guidedAskStep({title:"3 de 5 · Tipo",text:"Selecciona el tipo que más se parece.",options:["Documento","Procedimiento","Auditoría","Indicador/KPI","Riesgo/Hallazgo","Capacitación","Mejora continua","Consulta general"],value:current.category||"Documento"});
+  if(data.caseType===null)return;
+  data.evidence=await guidedAskStep({title:"4 de 5 · Evidencia",text:"¿Tienes evidencia, enlace o soporte?",input:"textarea",placeholder:"Ej. Tengo captura / PDF / No tengo evidencia",value:current.evidence||"",required:false});
+  if(data.evidence===null)return;
+  if(!data.evidence)data.evidence="No se informó evidencia inicial";
+  data.expected=await guidedAskStep({title:"5 de 5 · Resultado esperado",text:"¿Qué esperas recibir del equipo de Calidad?",input:"textarea",placeholder:"Ej. Revisión, ajuste, orientación o respuesta trazable"});
+  if(data.expected===null)return;
+  data.urgency=await guidedAskStep({title:"Urgencia",text:"¿Tiene fecha límite?",placeholder:"Ej. Esta semana / Sin urgencia",required:false});
+  if(data.urgency===null)return;
+  if(!data.urgency)data.urgency="Sin urgencia indicada";
+
+  const draft=guidedBuildDraft(data);
+  await createTicketDirectFromDraft(draft,"IA guiada");
+};
+
+generateTicketDraft=async function(){
+  const idea=document.getElementById("draftIdea")?.value?.trim();
+  if(!idea)return cleanSimplePopup("Falta la necesidad","Escribe la necesidad para que la IA pueda radicarla.");
+  const base=typeof guidedCurrentFormData==="function"?guidedCurrentFormData():{};
+  const draft=draftTicketFromText(idea);
+  draft.requesterName=base.requesterName||state.user?.name||draft.requesterName||"";
+  draft.requesterEmail=base.requesterEmail||draft.requesterEmail||"";
+  draft.requesterArea=base.requesterArea||draft.requesterArea||"No informado";
+  await createTicketDirectFromDraft(draft,"IA");
+};
+
+maybeOfferGuidedRadication=function(){};
+
+function compactMenuItems(){
+  if(!isInternal()){
+    return [
+      {view:"create",icon:"📝",label:"Radicar / consultar"},
+      {view:"ai",icon:"🤖",label:"IA Calidad"},
+      {view:"game",icon:"🎮",label:"Juegos IA"}
+    ];
+  }
+  const items=[
+    {view:"dashboard",icon:"🏠",label:"Inicio"},
+    {view:"tickets",icon:"🎫",label:"Solicitudes"},
+    {view:"create",icon:"📝",label:"Nueva solicitud"},
+    {view:"ai",icon:"🤖",label:"IA Calidad"},
+    {view:"game",icon:"🎮",label:"Juegos IA"}
+  ];
+  if(hasLead())items.splice(3,0,{view:"kpis",icon:"📊",label:"KPIs"},{view:"team",icon:"🛠️",label:"Equipo"});
+  return items;
+}
+function closeCompactMobileMenu(){document.body.classList.remove("compact-menu-open");}
+function openCompactMobileMenu(){compactBuildMobileMenu();document.body.classList.add("compact-menu-open");}
+function compactBuildMobileMenu(){
+  document.querySelectorAll("#qaMobileMenuDrawer,#qaMobileMenuBackdrop,#finalMobileMenuDrawer,#finalMobileMenuBackdrop,.mobile-drawer,.mobile-drawer-backdrop,.menu-backdrop").forEach(el=>el.remove());
+  let bg=document.getElementById("compactMobileMenuBackdrop");
+  if(!bg){
+    bg=document.createElement("div");
+    bg.id="compactMobileMenuBackdrop";
+    bg.addEventListener("click",closeCompactMobileMenu);
+    document.body.appendChild(bg);
+  }
+  let drawer=document.getElementById("compactMobileMenuDrawer");
+  if(!drawer){
+    drawer=document.createElement("aside");
+    drawer.id="compactMobileMenuDrawer";
+    document.body.appendChild(drawer);
+  }
+  drawer.innerHTML=`<div class="compact-menu-head"><img src="${assets.logo}" alt="Dream Team de Calidad"><small>Mesa de ayuda de calidad</small></div>
+    <div class="compact-menu-user"><strong>${escapeHtml(state.user.name)}</strong><span>${escapeHtml(state.user.role)}</span><button type="button" data-compact-action="logout">Salir</button></div>
+    <nav class="compact-menu-nav">${compactMenuItems().map(i=>`<button type="button" class="${state.view===i.view?'active':''}" data-compact-view="${i.view}"><span>${i.icon}</span><span>${i.label}</span></button>`).join("")}</nav>`;
+  drawer.querySelectorAll("[data-compact-view]").forEach(btn=>{
+    const go=(ev)=>{ev.preventDefault();ev.stopPropagation();const v=btn.dataset.compactView;closeCompactMobileMenu();setTimeout(()=>setView(v),60);};
+    btn.onclick=go;btn.ontouchend=go;
+  });
+  const logoutBtn=drawer.querySelector('[data-compact-action="logout"]');
+  if(logoutBtn){
+    const out=(ev)=>{ev.preventDefault();ev.stopPropagation();closeCompactMobileMenu();setTimeout(()=>logout(),60);};
+    logoutBtn.onclick=out;logoutBtn.ontouchend=out;
+  }
+}
+function compactInstallMobileMenuButton(){
+  const btn=document.querySelector(".mobile-menu");
+  if(!btn)return;
+  btn.removeAttribute("onclick");
+  const go=(ev)=>{ev.preventDefault();ev.stopPropagation();document.body.classList.contains("compact-menu-open")?closeCompactMobileMenu():openCompactMobileMenu();};
+  btn.onclick=go;btn.ontouchend=go;
+}
+toggleMenu=function(){
+  if(window.matchMedia("(max-width:880px)").matches){
+    document.body.classList.contains("compact-menu-open")?closeCompactMobileMenu():openCompactMobileMenu();
+    return;
+  }
+  document.getElementById("sidebar")?.classList.toggle("open");
+};
+
+const setViewBeforeFinalCompact=setView;
+setView=function(v){
+  closeCompactMobileMenu();
+  setViewBeforeFinalCompact(v);
+};
+window.addEventListener("resize",()=>{if(!window.matchMedia("(max-width:880px)").matches)closeCompactMobileMenu();});
 
 window.addEventListener('DOMContentLoaded',async()=>{
   prepareIntroStart();
