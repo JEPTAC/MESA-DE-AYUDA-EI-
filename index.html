@@ -4096,6 +4096,241 @@ body.visitor-mode .clean-user-actions .clean-logout{
   }
 }
 
+
+/* =========================================================
+   VISITANTE FINAL: BARRA LATERAL ORDENADA
+   ========================================================= */
+@media(min-width:881px){
+  body.visitor-mode .app-shell{
+    grid-template-columns:230px minmax(0,1fr)!important;
+  }
+
+  body.visitor-mode .sidebar{
+    width:230px!important;
+    min-width:230px!important;
+    max-width:230px!important;
+    height:100vh!important;
+    min-height:100vh!important;
+    padding:12px!important;
+    display:flex!important;
+    flex-direction:column!important;
+    gap:10px!important;
+    overflow-y:auto!important;
+    overflow-x:hidden!important;
+    background:rgba(255,255,255,.78)!important;
+  }
+
+  body.visitor-mode .sidebar .brand{
+    flex:0 0 auto!important;
+    margin:0!important;
+    padding:8px 8px 6px!important;
+    display:grid!important;
+    justify-items:center!important;
+    gap:4px!important;
+  }
+
+  body.visitor-mode .sidebar .brand img{
+    max-width:150px!important;
+    width:150px!important;
+    max-height:46px!important;
+    object-fit:contain!important;
+  }
+
+  body.visitor-mode .sidebar .brand small{
+    display:none!important;
+  }
+
+  body.visitor-mode .user-card{
+    flex:0 0 auto!important;
+    margin:0!important;
+    padding:10px 11px!important;
+    border-radius:17px!important;
+    min-height:auto!important;
+    display:block!important;
+    background:#ffffff!important;
+    border:1px solid rgba(11,59,130,.12)!important;
+    box-shadow:0 8px 18px rgba(11,59,130,.05)!important;
+  }
+
+  body.visitor-mode .user-card .avatar{
+    display:none!important;
+  }
+
+  body.visitor-mode .user-name{
+    font-size:12px!important;
+    line-height:1.18!important;
+    color:#0b3b82!important;
+    font-weight:900!important;
+    margin:0!important;
+  }
+
+  body.visitor-mode .user-role{
+    font-size:10.5px!important;
+    line-height:1.2!important;
+    color:#536379!important;
+    margin-top:3px!important;
+  }
+
+  body.visitor-mode .user-status{
+    display:none!important;
+  }
+
+  body.visitor-mode .clean-user-actions{
+    display:flex!important;
+    margin-top:9px!important;
+    width:100%!important;
+  }
+
+  body.visitor-mode .clean-logout{
+    display:inline-flex!important;
+    width:100%!important;
+    height:34px!important;
+    min-height:34px!important;
+    max-height:34px!important;
+    justify-content:center!important;
+    align-items:center!important;
+    padding:0 10px!important;
+    border-radius:12px!important;
+    font-size:11px!important;
+    line-height:1!important;
+    font-weight:900!important;
+    background:#fff1f2!important;
+    color:#be123c!important;
+    border:1px solid #fecdd3!important;
+    box-shadow:none!important;
+  }
+
+  body.visitor-mode .nav{
+    flex:0 0 auto!important;
+    display:flex!important;
+    flex-direction:column!important;
+    align-items:stretch!important;
+    justify-content:flex-start!important;
+    align-content:flex-start!important;
+    gap:7px!important;
+    margin:0!important;
+    padding:0!important;
+    height:auto!important;
+    min-height:0!important;
+    max-height:none!important;
+    overflow:visible!important;
+  }
+
+  body.visitor-mode .nav button{
+    width:100%!important;
+    height:52px!important;
+    min-height:52px!important;
+    max-height:52px!important;
+    flex:0 0 52px!important;
+    display:flex!important;
+    align-items:center!important;
+    justify-content:flex-start!important;
+    gap:10px!important;
+    padding:0 12px!important;
+    margin:0!important;
+    border-radius:16px!important;
+    font-size:12.5px!important;
+    line-height:1.15!important;
+    text-align:left!important;
+    white-space:normal!important;
+    overflow:hidden!important;
+    box-shadow:none!important;
+    transform:none!important;
+  }
+
+  body.visitor-mode .nav button:hover{
+    transform:none!important;
+  }
+
+  body.visitor-mode .nav button .icon{
+    flex:0 0 24px!important;
+    width:24px!important;
+    min-width:24px!important;
+    max-width:24px!important;
+    height:24px!important;
+    min-height:24px!important;
+    max-height:24px!important;
+    display:inline-flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    border-radius:999px!important;
+    font-size:14px!important;
+    line-height:1!important;
+    background:rgba(13,91,210,.08)!important;
+    overflow:hidden!important;
+  }
+
+  body.visitor-mode .nav button.active .icon{
+    background:rgba(255,255,255,.18)!important;
+  }
+
+  body.visitor-mode .nav button span:last-child{
+    flex:1 1 auto!important;
+    min-width:0!important;
+    max-width:100%!important;
+    display:block!important;
+    overflow:hidden!important;
+    text-overflow:ellipsis!important;
+    white-space:nowrap!important;
+    line-height:1.15!important;
+  }
+}
+
+/* En móvil, el visitante conserva navegación compacta y sin tarjetas gigantes */
+@media(max-width:880px){
+  body.visitor-mode .nav{
+    display:flex!important;
+    flex-direction:column!important;
+    gap:7px!important;
+    height:auto!important;
+    min-height:0!important;
+    align-content:flex-start!important;
+    justify-content:flex-start!important;
+  }
+
+  body.visitor-mode .nav button{
+    height:50px!important;
+    min-height:50px!important;
+    max-height:50px!important;
+    flex:0 0 50px!important;
+    padding:0 12px!important;
+    border-radius:15px!important;
+    align-items:center!important;
+    gap:9px!important;
+  }
+
+  body.visitor-mode .nav button .icon{
+    flex:0 0 24px!important;
+    width:24px!important;
+    height:24px!important;
+    display:inline-flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    border-radius:999px!important;
+    font-size:14px!important;
+  }
+
+  body.visitor-mode .nav button span:last-child{
+    overflow:hidden!important;
+    text-overflow:ellipsis!important;
+    white-space:nowrap!important;
+  }
+
+  body.visitor-mode .clean-user-actions{
+    display:flex!important;
+    margin-top:8px!important;
+  }
+
+  body.visitor-mode .clean-logout{
+    display:inline-flex!important;
+    width:100%!important;
+    height:34px!important;
+    min-height:34px!important;
+    justify-content:center!important;
+    align-items:center!important;
+  }
+}
+
 </style>
 
   <!-- Iconos APP / iPhone / Navegador -->
