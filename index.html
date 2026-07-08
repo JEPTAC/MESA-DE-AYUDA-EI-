@@ -3733,6 +3733,227 @@ th *{
   }
 }
 
+
+/* =========================================================
+   AJUSTE VISUAL CABECERAS + RADICACIÓN MÁS VISUAL
+   ========================================================= */
+.topbar{
+  background:#ffffff!important;
+  border:1px solid rgba(11,59,130,.10)!important;
+  border-radius:28px!important;
+  padding:16px 18px!important;
+  gap:16px!important;
+  align-items:center!important;
+  box-shadow:0 10px 30px rgba(11,59,130,.05)!important;
+}
+.page-title{
+  min-width:0!important;
+  display:flex!important;
+  flex-direction:column!important;
+  justify-content:center!important;
+  gap:4px!important;
+}
+.page-title h1{
+  margin:0!important;
+  padding:0!important;
+  line-height:1.02!important;
+  letter-spacing:-0.04em!important;
+}
+.page-title p{
+  margin:0!important;
+  line-height:1.35!important;
+}
+.topbar .view-fit-btn{
+  margin-left:auto!important;
+  align-self:center!important;
+  flex:0 0 auto!important;
+}
+
+.final-help-card-premium{
+  position:relative!important;
+  overflow:hidden!important;
+  background:
+    radial-gradient(circle at top right, rgba(247,191,36,.16), transparent 34%),
+    linear-gradient(180deg,#ffffff 0%, #f8fbff 100%)!important;
+  border:1px solid rgba(11,59,130,.10)!important;
+  box-shadow:0 18px 35px rgba(11,59,130,.06)!important;
+}
+.final-help-card-premium::before{
+  content:"";
+  position:absolute;
+  inset:0 auto auto 0;
+  width:100%;
+  height:6px;
+  background:linear-gradient(90deg,#0d5bd2,#3d84ee,#f7bf24);
+}
+.radicacion-hero{
+  display:grid!important;
+  gap:8px!important;
+  margin-bottom:12px!important;
+}
+.radicacion-kicker{
+  display:inline-flex!important;
+  align-items:center!important;
+  width:max-content!important;
+  max-width:100%!important;
+  padding:6px 10px!important;
+  border-radius:999px!important;
+  font-size:11px!important;
+  font-weight:900!important;
+  letter-spacing:.04em!important;
+  color:#0d5bd2!important;
+  background:rgba(13,91,210,.08)!important;
+  border:1px solid rgba(13,91,210,.10)!important;
+}
+.radicacion-hero h2{
+  margin:0!important;
+  font-size:24px!important;
+  line-height:1.05!important;
+  color:#0b3b82!important;
+}
+.radicacion-hero p{
+  margin:0!important;
+  font-size:13px!important;
+  line-height:1.5!important;
+  color:#516176!important;
+}
+.radicacion-chips{
+  display:flex!important;
+  flex-wrap:wrap!important;
+  gap:8px!important;
+  margin:0 0 14px!important;
+}
+.radicacion-chip{
+  display:inline-flex!important;
+  align-items:center!important;
+  padding:7px 10px!important;
+  border-radius:999px!important;
+  font-size:11px!important;
+  font-weight:800!important;
+  color:#0b3b82!important;
+  background:#ffffff!important;
+  border:1px solid rgba(11,59,130,.10)!important;
+}
+.final-mini-title h3,
+.final-main-title h2{
+  margin:0!important;
+}
+.final-mini-title{
+  align-items:end!important;
+}
+.final-mini-title h3{
+  font-size:15px!important;
+  color:#0b3b82!important;
+}
+.final-form-card{
+  border:1px solid rgba(11,59,130,.10)!important;
+  box-shadow:0 18px 35px rgba(11,59,130,.05)!important;
+}
+.radicacion-form-header{
+  margin-bottom:12px!important;
+  padding-bottom:12px!important;
+  border-bottom:1px solid rgba(11,59,130,.08)!important;
+}
+.radicacion-form-subtitle{
+  margin:6px 0 0!important;
+  font-size:13px!important;
+  line-height:1.45!important;
+  color:#617287!important;
+}
+.form-block{
+  display:grid!important;
+  gap:10px!important;
+  padding:14px!important;
+  border:1px solid rgba(11,59,130,.08)!important;
+  background:linear-gradient(180deg,#ffffff 0%, #fbfdff 100%)!important;
+  border-radius:18px!important;
+}
+.form-block + .form-block{
+  margin-top:2px!important;
+}
+.form-block-title{
+  font-size:12px!important;
+  font-weight:900!important;
+  letter-spacing:.04em!important;
+  text-transform:uppercase!important;
+  color:#0d5bd2!important;
+}
+.final-actions-row{
+  margin-top:4px!important;
+  padding-top:8px!important;
+}
+#ticketForm{
+  gap:12px!important;
+}
+#ticketForm .field input,
+#ticketForm .field select,
+#ticketForm .field textarea{
+  background:#fff!important;
+}
+@media(max-width:880px){
+  .topbar{
+    padding:14px 14px!important;
+    border-radius:22px!important;
+  }
+  .page-title h1{
+    font-size:clamp(26px,7vw,36px)!important;
+  }
+  .page-title p{
+    font-size:13px!important;
+  }
+  .topbar .view-fit-btn{
+    margin-left:0!important;
+  }
+  .radicacion-hero h2{
+    font-size:22px!important;
+  }
+  .radicacion-form-subtitle{
+    font-size:12px!important;
+  }
+}
+@media(min-width:881px) and (max-width:1279px){
+  .topbar{
+    padding:16px 18px!important;
+  }
+  .page-title h1{
+    font-size:34px!important;
+  }
+}
+@media(min-width:1280px) and (max-width:1799px){
+  .topbar{
+    padding:18px 22px!important;
+  }
+  .page-title h1{
+    font-size:38px!important;
+  }
+  .page-title p{
+    font-size:14px!important;
+  }
+}
+@media(min-width:1800px) and (min-height:900px){
+  .topbar{
+    padding:20px 24px!important;
+    border-radius:30px!important;
+  }
+  .page-title h1{
+    font-size:42px!important;
+  }
+  .page-title p{
+    font-size:15px!important;
+  }
+  .radicacion-hero h2{
+    font-size:28px!important;
+  }
+  .radicacion-hero p,
+  .radicacion-form-subtitle{
+    font-size:14px!important;
+  }
+  .form-block{
+    padding:16px!important;
+    border-radius:20px!important;
+  }
+}
+
 </style>
 
   <!-- Iconos APP / iPhone / Navegador -->
@@ -8626,29 +8847,64 @@ window.addEventListener('DOMContentLoaded',()=>setTimeout(pcRemoveMobileDrawersO
    ASISTENTE GUIADO FINAL CON RESUMEN Y ENVÍO
    ========================================================= */
 
+
 function finalCreateHtml(){
   return `<div class="final-create-layout">
-    <section class="final-help-card">
-      <h2>Crear con ayuda</h2>
-      <p>La mesa puede guiar la solicitud paso a paso. Al final verás un resumen y decides si la envías.</p>
+    <section class="final-help-card final-help-card-premium">
+      <div class="radicacion-hero">
+        <span class="radicacion-kicker">Radicación asistida</span>
+        <h2>Crear con ayuda</h2>
+        <p>Si prefieres ir rápido, la mesa te guía paso a paso, organiza la información y al final te deja revisar el resumen antes de enviar.</p>
+      </div>
+
+      <div class="radicacion-chips">
+        <span class="radicacion-chip">Paso a paso</span>
+        <span class="radicacion-chip">Resumen final</span>
+        <span class="radicacion-chip">Envío al correo</span>
+      </div>
+
       <button class="btn primary" type="button" onclick="finalStartGuidedRequest(true)">Crear solicitud con ayuda</button>
 
       <div class="final-lookup">
-        <div class="field"><label>Consultar radicado</label><input id="lookupCode" placeholder="DT-0001"></div>
+        <div class="section-title final-mini-title">
+          <h3>Consultar por radicado</h3>
+          <span>seguimiento rápido</span>
+        </div>
+        <div class="field">
+          <label>Código de la solicitud</label>
+          <input id="lookupCode" placeholder="DT-0001">
+        </div>
         <button class="btn ghost" type="button" onclick="lookupTicket()">Buscar</button>
       </div>
     </section>
 
-    <section class="card">
-      <div class="section-title"><h2>Registro manual</h2><span>datos necesarios</span></div>
-      <form class="form" id="ticketForm">
-        <div class="grid cols-2">
-          <div class="field"><label>Solicitante</label><input name="requesterName" required value="${state.user.role==='Solicitante'?'':escapeHtml(state.user.name)}"></div>
-          <div class="field"><label>Correo de seguimiento</label><input name="requesterEmail" type="email" required placeholder="correo@empresa.com"></div>
+    <section class="card final-form-card">
+      <div class="radicacion-form-header">
+        <div>
+          <div class="section-title final-main-title">
+            <h2>Registro manual</h2>
+            <span>completa lo esencial</span>
+          </div>
+          <p class="radicacion-form-subtitle">Puedes llenar la solicitud directamente. Si luego prefieres ayuda, también puedes usar la opción asistida.</p>
         </div>
-        <div class="field"><label>Área / proceso</label><input name="requesterArea" required placeholder="Ej. Logística, ventas, cartera"></div>
-        <div class="field"><label>Asunto</label><input name="title" required placeholder="Resume la necesidad"></div>
-        <div class="field"><label>Descripción</label><textarea name="description" required placeholder="Qué necesitas, por qué se solicita y resultado esperado"></textarea></div>
+      </div>
+
+      <form class="form" id="ticketForm">
+        <div class="form-block">
+          <div class="form-block-title">Datos del solicitante</div>
+          <div class="grid cols-2">
+            <div class="field"><label>Solicitante</label><input name="requesterName" required value="${state.user.role==='Solicitante'?'':escapeHtml(state.user.name)}"></div>
+            <div class="field"><label>Correo de seguimiento</label><input name="requesterEmail" type="email" required placeholder="correo@empresa.com"></div>
+          </div>
+          <div class="field"><label>Área / proceso</label><input name="requesterArea" required placeholder="Ej. Logística, ventas, cartera"></div>
+        </div>
+
+        <div class="form-block">
+          <div class="form-block-title">Información de la solicitud</div>
+          <div class="field"><label>Asunto</label><input name="title" required placeholder="Resume la necesidad"></div>
+          <div class="field"><label>Descripción</label><textarea name="description" required placeholder="Qué necesitas, por qué se solicita y resultado esperado"></textarea></div>
+        </div>
+
         <details class="final-advanced">
           <summary>Clasificación avanzada</summary>
           <div class="grid cols-2" style="margin-top:10px">
@@ -8660,10 +8916,15 @@ function finalCreateHtml(){
             <div class="field"><label>Modalidad</label><select name="modality"><option>Documental</option><option>Presencial</option><option>Mixta</option></select></div>
           </div>
         </details>
-        <div class="grid cols-2">
-          <div class="field"><label>Evidencia / enlace opcional</label><input name="evidence" placeholder="Drive, PDF, imagen, acta"></div>
-          <div class="field"><label>Adjuntos</label><input id="ticketAttachments" type="file" multiple accept=".pdf,.doc,.docx,.xls,.xlsx,.csv,.png,.jpg,.jpeg,.webp,.txt"></div>
+
+        <div class="form-block">
+          <div class="form-block-title">Soportes</div>
+          <div class="grid cols-2">
+            <div class="field"><label>Evidencia / enlace opcional</label><input name="evidence" placeholder="Drive, PDF, imagen, acta"></div>
+            <div class="field"><label>Adjuntos</label><input id="ticketAttachments" type="file" multiple accept=".pdf,.doc,.docx,.xls,.xlsx,.csv,.png,.jpg,.jpeg,.webp,.txt"></div>
+          </div>
         </div>
+
         <input type="hidden" name="priorityCode" value="">
         <div class="final-actions-row"><button class="btn primary" type="submit">Enviar solicitud</button></div>
       </form>
@@ -8672,6 +8933,7 @@ function finalCreateHtml(){
 }
 
 createHtml=function(){return finalCreateHtml();};
+
 
 function finalValidEmail(v){return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(v||"").trim());}
 
