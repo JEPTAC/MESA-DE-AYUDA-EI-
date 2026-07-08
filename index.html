@@ -3430,6 +3430,309 @@ textarea{
   color:#536379!important;
 }
 
+
+/* =========================================================
+   QA PROPORCIONES / TEXTO DENTRO DE FIGURAS / PC GRANDE
+   ========================================================= */
+
+/* Evita que textos largos se salgan de botones, tarjetas, métricas o bloques */
+.card,
+.metric,
+.lane,
+.ticket-card,
+.assignment-card,
+.final-help-card,
+.user-card,
+.nav button,
+.btn,
+.badge,
+.status,
+.mode-pill,
+.swal2-popup,
+.wizard-summary,
+.attach-item,
+.table-wrap,
+td,
+th{
+  min-width:0!important;
+  max-width:100%!important;
+  box-sizing:border-box!important;
+}
+
+.card *,
+.metric *,
+.lane *,
+.ticket-card *,
+.assignment-card *,
+.final-help-card *,
+.user-card *,
+.nav button *,
+.btn *,
+.badge *,
+.status *,
+.wizard-summary *,
+.attach-item *,
+td *,
+th *{
+  min-width:0!important;
+  overflow-wrap:anywhere!important;
+  word-break:normal!important;
+}
+
+.nav button,
+.btn,
+.badge,
+.status,
+.clean-logout,
+.view-fit-btn{
+  white-space:normal!important;
+  line-height:1.18!important;
+}
+
+.nav button span:last-child,
+.btn span,
+.badge span,
+.status span{
+  min-width:0!important;
+  overflow-wrap:anywhere!important;
+}
+
+.metric .value,
+.metric .label,
+.section-title h2,
+.section-title span,
+.page-title h1,
+.page-title p,
+.user-name,
+.user-role,
+.assignment-card strong,
+.assignment-card span,
+.assignment-card em{
+  overflow-wrap:anywhere!important;
+  hyphens:auto!important;
+}
+
+.table-wrap table{
+  table-layout:auto!important;
+  width:100%!important;
+}
+
+.table-wrap td,
+.table-wrap th{
+  vertical-align:top!important;
+  white-space:normal!important;
+  line-height:1.25!important;
+}
+
+.attach-item{
+  display:grid!important;
+  grid-template-columns:minmax(0,1fr) auto!important;
+  gap:10px!important;
+}
+
+.attach-meta{
+  min-width:0!important;
+}
+
+.attach-actions{
+  flex:0 0 auto!important;
+}
+
+/* Solo PC grande / 1920x1080: un poco más de zoom y presencia visual */
+@media(min-width:1800px) and (min-height:900px){
+  body:not(.manual-density) .app-shell,
+  body.view-density-wide .app-shell{
+    grid-template-columns:300px minmax(0,1fr)!important;
+  }
+
+  body:not(.manual-density) .sidebar,
+  body.view-density-wide .sidebar{
+    width:300px!important;
+    padding:26px!important;
+  }
+
+  body:not(.manual-density) .sidebar .brand img,
+  body.view-density-wide .sidebar .brand img{
+    max-height:74px!important;
+  }
+
+  body:not(.manual-density) .sidebar .brand small,
+  body.view-density-wide .sidebar .brand small{
+    font-size:12.5px!important;
+    line-height:1.32!important;
+    display:block!important;
+  }
+
+  body:not(.manual-density) .user-card,
+  body.view-density-wide .user-card{
+    padding:16px!important;
+    border-radius:22px!important;
+    margin-bottom:16px!important;
+  }
+
+  body:not(.manual-density) .user-name,
+  body.view-density-wide .user-name{
+    font-size:15px!important;
+  }
+
+  body:not(.manual-density) .user-role,
+  body.view-density-wide .user-role{
+    font-size:12px!important;
+  }
+
+  body:not(.manual-density) .nav,
+  body.view-density-wide .nav{
+    gap:9px!important;
+  }
+
+  body:not(.manual-density) .nav button,
+  body.view-density-wide .nav button{
+    min-height:54px!important;
+    padding:14px 16px!important;
+    border-radius:19px!important;
+    font-size:15px!important;
+    gap:12px!important;
+  }
+
+  body:not(.manual-density) .nav .icon,
+  body.view-density-wide .nav .icon{
+    font-size:18px!important;
+    width:25px!important;
+  }
+
+  body:not(.manual-density) .main,
+  body.view-density-wide .main{
+    max-width:1620px!important;
+    padding:30px 38px!important;
+  }
+
+  body:not(.manual-density) .topbar,
+  body.view-density-wide .topbar{
+    margin-bottom:18px!important;
+  }
+
+  body:not(.manual-density) .page-title h1,
+  body.view-density-wide .page-title h1{
+    font-size:40px!important;
+    line-height:1.05!important;
+  }
+
+  body:not(.manual-density) .page-title p,
+  body.view-density-wide .page-title p{
+    display:block!important;
+    font-size:14px!important;
+    line-height:1.35!important;
+    max-width:900px!important;
+  }
+
+  body:not(.manual-density) .card,
+  body:not(.manual-density) .final-help-card,
+  body.view-density-wide .card,
+  body.view-density-wide .final-help-card{
+    padding:22px!important;
+    border-radius:28px!important;
+  }
+
+  body:not(.manual-density) .final-create-layout,
+  body.view-density-wide .final-create-layout{
+    grid-template-columns:460px minmax(800px,1fr)!important;
+    gap:24px!important;
+  }
+
+  body:not(.manual-density) .final-help-card h2,
+  body.view-density-wide .final-help-card h2{
+    font-size:22px!important;
+  }
+
+  body:not(.manual-density) .final-help-card p,
+  body.view-density-wide .final-help-card p{
+    font-size:14px!important;
+    line-height:1.45!important;
+  }
+
+  body:not(.manual-density) .section-title h2,
+  body.view-density-wide .section-title h2{
+    font-size:21px!important;
+  }
+
+  body:not(.manual-density) .section-title span,
+  body.view-density-wide .section-title span{
+    font-size:12px!important;
+  }
+
+  body:not(.manual-density) input,
+  body:not(.manual-density) select,
+  body:not(.manual-density) textarea,
+  body.view-density-wide input,
+  body.view-density-wide select,
+  body.view-density-wide textarea{
+    min-height:48px!important;
+    padding:13px 15px!important;
+    border-radius:16px!important;
+    font-size:15px!important;
+  }
+
+  body:not(.manual-density) textarea,
+  body.view-density-wide textarea{
+    min-height:128px!important;
+  }
+
+  body:not(.manual-density) .field label,
+  body.view-density-wide .field label{
+    font-size:12.5px!important;
+    margin-bottom:7px!important;
+  }
+
+  body:not(.manual-density) .btn,
+  body.view-density-wide .btn{
+    min-height:46px!important;
+    padding:12px 16px!important;
+    border-radius:16px!important;
+    font-size:14px!important;
+  }
+
+  body:not(.manual-density) .metric .value,
+  body.view-density-wide .metric .value{
+    font-size:36px!important;
+  }
+
+  body:not(.manual-density) .grid,
+  body.view-density-wide .grid{
+    gap:18px!important;
+  }
+
+  body:not(.manual-density) .assignment-grid,
+  body.view-density-wide .assignment-grid{
+    gap:14px!important;
+  }
+
+  body:not(.manual-density) .assignment-card,
+  body.view-density-wide .assignment-card{
+    padding:14px!important;
+    border-radius:20px!important;
+  }
+
+  body:not(.manual-density) .assignment-card strong,
+  body.view-density-wide .assignment-card strong{
+    font-size:14px!important;
+  }
+
+  body:not(.manual-density) .assignment-card span,
+  body:not(.manual-density) .assignment-card em,
+  body.view-density-wide .assignment-card span,
+  body.view-density-wide .assignment-card em{
+    font-size:12px!important;
+  }
+
+  body:not(.manual-density) .view-fit-btn,
+  body.view-density-wide .view-fit-btn{
+    min-height:42px!important;
+    padding:10px 15px!important;
+    font-size:13px!important;
+    border-radius:16px!important;
+  }
+}
+
 </style>
 
   <!-- Iconos APP / iPhone / Navegador -->
