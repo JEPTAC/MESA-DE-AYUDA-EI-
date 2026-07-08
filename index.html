@@ -3954,6 +3954,73 @@ th *{
   }
 }
 
+
+/* =========================================================
+   ADJUNTOS + VISITANTE COMPACTO
+   ========================================================= */
+body.visitor-mode .sidebar{
+  padding:12px!important;
+  width:205px!important;
+}
+body.visitor-mode .sidebar .brand{
+  margin-bottom:8px!important;
+}
+body.visitor-mode .sidebar .brand img{
+  max-height:42px!important;
+}
+body.visitor-mode .sidebar .brand small{
+  display:none!important;
+}
+body.visitor-mode .user-card{
+  padding:9px!important;
+  border-radius:15px!important;
+  margin-bottom:8px!important;
+}
+body.visitor-mode .user-name{
+  font-size:11.5px!important;
+}
+body.visitor-mode .user-role{
+  font-size:10px!important;
+}
+body.visitor-mode .nav{
+  gap:5px!important;
+}
+body.visitor-mode .nav button{
+  min-height:34px!important;
+  padding:7px 9px!important;
+  border-radius:12px!important;
+  font-size:11.5px!important;
+  gap:8px!important;
+  box-shadow:none!important;
+}
+body.visitor-mode .nav .icon{
+  width:18px!important;
+  font-size:14px!important;
+}
+body.visitor-mode .clean-user-actions,
+body.visitor-mode .clean-logout{
+  display:none!important;
+}
+body.visitor-mode .app-shell{
+  grid-template-columns:205px minmax(0,1fr)!important;
+}
+
+.file-clean-note{
+  margin-top:8px!important;
+  padding:8px 10px!important;
+  border-radius:12px!important;
+  background:#f7fbff!important;
+  border:1px solid rgba(11,59,130,.10)!important;
+  color:#536379!important;
+  font-size:11.5px!important;
+  line-height:1.35!important;
+}
+@media(max-width:880px){
+  body.visitor-mode .app-shell{
+    grid-template-columns:1fr!important;
+  }
+}
+
 </style>
 
   <!-- Iconos APP / iPhone / Navegador -->
@@ -9284,6 +9351,169 @@ finalStartGuidedRequest=async function(fromOffer=false){
   const draft=finalBuildDraftWithFiles(data);
   await finalConfirmAndSendDraft(draft);
 };
+
+
+/* =========================================================
+   FIX ADJUNTOS EN SOLICITUD + LIMPIEZA AL CIERRE + VISITANTE
+   ========================================================= */
+(function(){
+  function applyVisitorMode(){
+    try{
+      document.body.classList.toggle("visitor-mode", state?.user?.role==="Solicitante");
+    }catch(e){}
+  }
+
+  const renderAppBeforeVisitorFiles=typeof renderApp==="function"?renderApp:null;
+  if(renderAppBeforeVisitorFiles){
+    renderApp=function(){
+      applyVisitorMode();
+      renderAppBeforeVisitorFiles();
+      applyVisitorMode();
+    };
+  }
+
+  const originalFilesToAttachments=typeof filesToAttachments==="function"?filesToAttachments:null;
+  if(originalFilesToAttachments && !window.__filesToAttachmentsValidated){
+    window.__filesToAttachmentsValidated=true;
+    filesToAttachments=async function(list){
+      const files=[...(list||[])].slice(0,8);
+      const total=files.reduce((s,f)=>s+(f.size||0),0);
+      const max=8*1024*1024;
+      if(total>max){
+        await Swal.fire({
+          title:"Archivos muy pesados",
+          html:`<div class="wizard-summary"><p>Los adjuntos suman ${humanSize(total)}. Para evitar que la solicitud falle por memoria, carga máximo ${humanSize(max)} por solicitud.</p></div>`,
+          confirmButtonText:"Entendido",
+          confirmButtonColor:"#0d5bd2"
+        });
+        return [];
+      }
+      const items=await originalFilesToAttachments(files);
+      return (items||[]).map(a=>({...a,source:"solicitud",keepUntilClose:true}));
+    };
+  }
+
+  function ticketFilesFromDraft(draft,ticketId){
+    const list=[
+      ...(draft?.pendingAttachments||[]),
+      ...(draft?.attachments||[])
+    ];
+    return list.map(a=>({...a,ticketId,scope:"general",source:a.source||"solicitud",keepUntilClose:true}));
+  }
+
+  // Esta versión reemplaza la anterior para que los adjuntos queden guardados desde el primer save.
+  createTicketDirectFromDraft=async function(draft,source="IA guiada"){
+    const ticketId=uid("ticket");
+    const email=String(draft.requesterEmail||"").trim();
+    const category=draft.category||"Consulta general";
+    const priority=draft.priority||"Media";
+    const modality=draft.modality||"Mixta";
+    const attachments=ticketFilesFromDraft(draft,ticketId);
+    const ticket={
+      id:ticketId,
+      code:"DT-"+String(maxTicketCode()+1).padStart(4,"0"),
+      requesterName:draft.requesterName||state.user?.name||"Solicitante general",
+      requesterEmail:email,
+      requesterArea:draft.requesterArea||"No informado",
+      assignedTo:draft.assignedTo||suggestAssignee(category,priority,[draft.title||"",draft.description||""].join(" ")),
+      category,
+      priority,
+      modality,
+      title:draft.title||makeTitleFromText(draft.description||"Solicitud",category),
+      description:draft.description||"Solicitud creada con asistencia de IA.",
+      evidence:draft.evidenceHint||(attachments.length?`${attachments.length} archivo(s) adjunto(s)`:""),
+      attachments,
+      resolutionFiles:[],
+      status:"Enviada",
+      createdBy:state.user?.id||"guest",
+      acceptedAt:null,
+      finishedAt:null,
+      extendedReason:"",
+      chat:[{by:state.user?.name||"Solicitante",text:`Solicitud radicada mediante ${source}.`,at:now()}],
+      timeline:[
+        {label:"Radicación",text:`Solicitud enviada al responsable mediante ${source}.`,at:now()},
+        ...(attachments.length?[{label:"Adjuntos",text:`Se cargaron ${attachments.length} archivo(s) como soporte de la solicitud.`,at:now()}]:[])
+      ],
+      created_at:now(),
+      updated_at:now()
+    };
+    try{
+      if(typeof ticketQualityFromObject==="function")ticket.quality=ticketQualityFromObject(ticket);
+      if(typeof slaInfo==="function"){
+        const s=slaInfo(ticket);
+        if(s)ticket.sla={rule:s.rule.label,due:s.due,minutes:s.rule.minutes};
+      }
+    }catch(e){}
+    await saveRecord(tables.tickets,ticket);
+    state.tickets=await listRecords(tables.tickets);
+    state.selectedTicketId=ticket.id;
+    state.selectedTicket=ticket;
+    state.view="detail";
+    try{playSound(sounds.created)}catch(e){}
+    renderApp();
+    toast(`Solicitud enviada: ${ticket.code}`);
+    setTimeout(()=>sendTicketEmailAutomatic(ticket,"created",true).then(r=>{if(r.ok)toast("Comprobante enviado al correo")}),500);
+    Swal.fire({
+      title:"Solicitud enviada",
+      html:`<div class="wizard-summary"><p>Radicado generado: <strong>${escapeHtml(ticket.code)}</strong>.</p><p>La solicitud quedó asignada a <strong>${escapeHtml(userName(ticket.assignedTo))}</strong>.</p>${attachments.length?`<p>Adjuntos cargados: <strong>${attachments.length}</strong>.</p>`:""}<p class="file-clean-note">Los adjuntos quedan disponibles durante la gestión y se limpian al cerrar la solicitud.</p></div>`,
+      confirmButtonText:"Entendido",
+      confirmButtonColor:"#0d5bd2"
+    });
+    return ticket;
+  };
+
+  async function purgeTicketFiles(ticket,reason="Solicitud cerrada"){
+    if(!ticket)return ticket;
+    const hadGeneral=(ticket.attachments||[]).length;
+    const hadResolution=(ticket.resolutionFiles||[]).length;
+    if(!hadGeneral&&!hadResolution)return ticket;
+    ticket.filesPurgedAt=now();
+    ticket.filesPurgedReason=reason;
+    ticket.filesPurgedCount=hadGeneral+hadResolution;
+    ticket.attachments=[];
+    ticket.resolutionFiles=[];
+    ticket.timeline=ticket.timeline||[];
+    ticket.timeline.push({
+      label:"Limpieza de archivos",
+      text:`Se eliminaron ${ticket.filesPurgedCount} archivo(s) adjuntos para no ocupar memoria después del cierre.`,
+      at:now()
+    });
+    return ticket;
+  }
+
+  if(typeof closeTicket==="function" && !window.__closeTicketPurgePatched){
+    window.__closeTicketPurgePatched=true;
+    closeTicket=async function(id){
+      const t=state.tickets.find(x=>x.id===id);
+      if(!t)return;
+      t.finishedAt=t.finishedAt||now();
+      t.chat=t.chat||[];
+      t.chat.push({by:state.user.name,text:"Solicitud cerrada y notificada al solicitante.",at:now()});
+      await purgeTicketFiles(t,"Cierre de solicitud");
+      await updateTicket(t,"Cierre","Solicitud cerrada y notificada. Los adjuntos fueron limpiados para no ocupar memoria.","Cerrada");
+      playSound(sounds.ready);
+      popup("Solicitud cerrada","La solicitud fue cerrada y los archivos adjuntos fueron limpiados del registro para ahorrar memoria.","");
+      if(window.confetti)confetti({particleCount:140,spread:85,origin:{y:.75}});
+    };
+  }
+
+  // Si alguna solicitud ya cerrada quedó con adjuntos, se limpia al cargarla en detalle.
+  const openTicketBeforeFileClean=typeof openTicket==="function"?openTicket:null;
+  if(openTicketBeforeFileClean && !window.__openTicketCleanPatched){
+    window.__openTicketCleanPatched=true;
+    openTicket=async function(id,fromLookup=false){
+      const t=state.tickets.find(x=>x.id===id);
+      if(t && /cerrada/i.test(t.status||"") && ((t.attachments||[]).length || (t.resolutionFiles||[]).length)){
+        await purgeTicketFiles(t,"Limpieza automática de solicitud cerrada");
+        await saveRecord(tables.tickets,t);
+        state.tickets=await listRecords(tables.tickets);
+      }
+      return openTicketBeforeFileClean(id,fromLookup);
+    };
+  }
+
+  window.addEventListener("DOMContentLoaded",()=>setTimeout(applyVisitorMode,120));
+})();
 
 window.addEventListener('DOMContentLoaded',async()=>{
   prepareIntroStart();
