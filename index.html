@@ -3284,6 +3284,52 @@ textarea{
   .assignment-grid{grid-template-columns:1fr!important}
 }
 
+
+/* =========================================================
+   RESPONSIVE FINAL PC + IA GUIADA
+   ========================================================= */
+#compactMobileMenuDrawer,#compactMobileMenuBackdrop,#finalMobileMenuDrawer,#finalMobileMenuBackdrop,#qaMobileMenuDrawer,#qaMobileMenuBackdrop,.mobile-drawer,.mobile-drawer-backdrop,.menu-backdrop{
+  display:none!important;visibility:hidden!important;pointer-events:none!important;
+}
+@media(min-width:881px){
+  .app-shell{display:grid!important;grid-template-columns:228px minmax(0,1fr)!important;min-height:100vh!important}
+  .sidebar{width:228px!important;padding:14px!important;height:100vh!important;min-height:100vh!important;overflow-y:auto!important;overflow-x:hidden!important}
+  .sidebar .brand img{max-height:48px!important}.sidebar .brand small{font-size:10px!important;line-height:1.25!important}
+  .user-card{padding:10px!important;border-radius:17px!important;margin-bottom:10px!important}.user-card .avatar{display:none!important}
+  .user-name{font-size:12px!important;line-height:1.15!important}.user-role{font-size:10.5px!important;margin-top:3px!important}.user-status{display:none!important}
+  .nav{gap:5px!important}.nav button{min-height:36px!important;padding:8px 10px!important;border-radius:13px!important;font-size:12px!important}
+  .main{padding:12px 14px!important;min-width:0!important}.topbar{margin-bottom:9px!important}.mobile-menu{display:none!important}
+  .page-title h1{font-size:24px!important;line-height:1.05!important}.page-title p{display:none!important}
+  .top-actions,.clean-top-actions{display:none!important}.card{padding:12px!important;border-radius:20px!important}.grid{gap:10px!important}.form{gap:9px!important}
+  input,select,textarea{min-height:36px!important;padding:8px 10px!important;border-radius:12px!important;font-size:12px!important}
+  textarea{min-height:64px!important}.btn{min-height:36px!important;padding:8px 11px!important;border-radius:12px!important;font-size:11.5px!important}
+  .final-create-layout{display:grid!important;grid-template-columns:minmax(255px,.8fr) minmax(430px,1.2fr)!important;gap:10px!important;align-items:start!important}
+  .final-help-card{background:#fff!important;border:1px solid rgba(11,59,130,.10)!important;border-radius:20px!important;padding:12px!important;box-shadow:0 8px 22px rgba(11,59,130,.05)!important}
+  .final-help-card h2{margin:0 0 6px!important;font-size:17px!important;color:#0b3b82!important}
+  .final-help-card p{margin:0 0 10px!important;font-size:11px!important;line-height:1.35!important;color:#536379!important}
+  .final-help-card .btn{width:100%!important;justify-content:center!important}
+  .final-lookup{margin-top:10px!important;padding-top:10px!important;border-top:1px solid rgba(11,59,130,.10)!important}
+  .final-advanced{border:1px solid rgba(11,59,130,.10)!important;border-radius:15px!important;padding:8px!important;background:#fbfdff!important}
+  .final-advanced summary{cursor:pointer!important;font-size:11px!important;font-weight:900!important;color:#0b3b82!important}
+  .final-actions-row{display:flex!important;justify-content:flex-end!important;margin-top:0!important}
+  .table-wrap{max-height:calc(100vh - 180px)!important;overflow:auto!important}.ai-chat{max-height:310px!important}
+}
+@media(min-width:1280px){
+  .app-shell{grid-template-columns:250px minmax(0,1fr)!important}.sidebar{width:250px!important;padding:18px!important}.main{padding:18px 22px!important}
+  .page-title h1{font-size:30px!important}.grid.cols-4{grid-template-columns:repeat(4,minmax(0,1fr))!important}.grid.cols-3{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+  .final-create-layout{grid-template-columns:minmax(330px,.72fr) minmax(560px,1.28fr)!important;gap:16px!important}
+  .card,.final-help-card{padding:16px!important}input,select,textarea{min-height:40px!important;font-size:13px!important}textarea{min-height:86px!important}
+}
+@media(min-width:1600px){
+  .main{max-width:1480px!important;margin:0 auto!important;width:100%!important}
+  .final-create-layout{grid-template-columns:420px minmax(680px,1fr)!important;gap:18px!important}
+  .grid.cols-4{grid-template-columns:repeat(4,minmax(220px,1fr))!important}
+}
+@media(max-width:880px){
+  body.compact-menu-open #compactMobileMenuBackdrop,body.compact-menu-open #compactMobileMenuDrawer{display:block!important;visibility:visible!important;pointer-events:auto!important}
+  .final-create-layout{display:grid!important;grid-template-columns:1fr!important;gap:10px!important}
+}
+
 </style>
 
   <!-- Iconos APP / iPhone / Navegador -->
@@ -8171,6 +8217,222 @@ window.addEventListener('DOMContentLoaded',()=>setTimeout(pcRemoveMobileDrawersO
     }
   }catch(e){}
 })();
+
+
+/* =========================================================
+   ASISTENTE GUIADO FINAL CON RESUMEN Y ENVÍO
+   ========================================================= */
+
+function finalCreateHtml(){
+  return `<div class="final-create-layout">
+    <section class="final-help-card">
+      <h2>Crear con ayuda</h2>
+      <p>La mesa puede guiar la solicitud paso a paso. Al final verás un resumen y decides si la envías.</p>
+      <button class="btn primary" type="button" onclick="finalStartGuidedRequest(true)">Crear solicitud con ayuda</button>
+
+      <div class="final-lookup">
+        <div class="field"><label>Consultar radicado</label><input id="lookupCode" placeholder="DT-0001"></div>
+        <button class="btn ghost" type="button" onclick="lookupTicket()">Buscar</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="section-title"><h2>Registro manual</h2><span>datos necesarios</span></div>
+      <form class="form" id="ticketForm">
+        <div class="grid cols-2">
+          <div class="field"><label>Solicitante</label><input name="requesterName" required value="${state.user.role==='Solicitante'?'':escapeHtml(state.user.name)}"></div>
+          <div class="field"><label>Correo de seguimiento</label><input name="requesterEmail" type="email" required placeholder="correo@empresa.com"></div>
+        </div>
+        <div class="field"><label>Área / proceso</label><input name="requesterArea" required placeholder="Ej. Logística, ventas, cartera"></div>
+        <div class="field"><label>Asunto</label><input name="title" required placeholder="Resume la necesidad"></div>
+        <div class="field"><label>Descripción</label><textarea name="description" required placeholder="Qué necesitas, por qué se solicita y resultado esperado"></textarea></div>
+        <details class="final-advanced">
+          <summary>Clasificación avanzada</summary>
+          <div class="grid cols-2" style="margin-top:10px">
+            <div class="field"><label>Responsable</label><select name="assignedTo" required>${responders().map(u=>`<option value="${u.id}">${escapeHtml(u.name)} · ${escapeHtml(u.role)}</option>`).join("")}</select></div>
+            <div class="field"><label>Categoría</label><select name="category">${categories.map(c=>`<option>${c}</option>`).join("")}</select></div>
+          </div>
+          <div class="grid cols-2">
+            <div class="field"><label>Prioridad</label><select name="priority">${priorities.map(p=>`<option ${p==='Media'?'selected':''}>${p}</option>`).join("")}</select></div>
+            <div class="field"><label>Modalidad</label><select name="modality"><option>Documental</option><option>Presencial</option><option>Mixta</option></select></div>
+          </div>
+        </details>
+        <div class="grid cols-2">
+          <div class="field"><label>Evidencia / enlace opcional</label><input name="evidence" placeholder="Drive, PDF, imagen, acta"></div>
+          <div class="field"><label>Adjuntos</label><input id="ticketAttachments" type="file" multiple accept=".pdf,.doc,.docx,.xls,.xlsx,.csv,.png,.jpg,.jpeg,.webp,.txt"></div>
+        </div>
+        <input type="hidden" name="priorityCode" value="">
+        <div class="final-actions-row"><button class="btn primary" type="submit">Enviar solicitud</button></div>
+      </form>
+    </section>
+  </div>`;
+}
+
+createHtml=function(){return finalCreateHtml();};
+
+function finalValidEmail(v){return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(v||"").trim());}
+
+async function finalAskStep(cfg){
+  const options=cfg.options||null;
+  const htmlOptions=options?`<select id="final-guided-input" class="swal2-select" style="width:82%;max-width:460px">${options.map(o=>`<option ${o===cfg.value?'selected':''}>${escapeHtml(o)}</option>`).join("")}</select>`:"";
+  const result=await Swal.fire({
+    title:cfg.title,
+    html:`<div class="wizard-summary"><p>${cfg.text}</p>${htmlOptions}</div>`,
+    input:options?undefined:(cfg.input||"text"),
+    inputValue:options?undefined:(cfg.value||""),
+    inputPlaceholder:cfg.placeholder||"",
+    showCancelButton:true,
+    confirmButtonText:cfg.confirmText||"Siguiente",
+    cancelButtonText:"Cancelar",
+    confirmButtonColor:"#0d5bd2",
+    cancelButtonColor:"#6b7280",
+    allowOutsideClick:false,
+    preConfirm:(v)=>{
+      const val=options?document.getElementById("final-guided-input")?.value:v;
+      if(cfg.required!==false&&!String(val||"").trim()){
+        Swal.showValidationMessage("Este dato es necesario.");
+        return false;
+      }
+      if(cfg.type==="email" && !finalValidEmail(val)){
+        Swal.showValidationMessage("Escribe un correo válido. Allí llegará el comprobante.");
+        return false;
+      }
+      return String(val||"").trim();
+    }
+  });
+  if(!result.isConfirmed)return null;
+  return result.value||"";
+}
+
+function finalBuildDraft(data){
+  const combined=`Área o proceso: ${data.area}. Necesidad: ${data.need}. Tipo: ${data.caseType}. Evidencia: ${data.evidence}. Resultado esperado: ${data.expected}. Urgencia: ${data.urgency}.`;
+  const draft=typeof draftTicketFromText==="function"?draftTicketFromText(combined):{};
+  const classification=typeof classifyFromText==="function"?classifyFromText(combined):null;
+  if(classification){
+    draft.category=classification.category||draft.category;
+    draft.priority=classification.priority||draft.priority;
+    draft.modality=classification.modality||draft.modality;
+  }
+  draft.requesterName=data.requesterName;
+  draft.requesterEmail=data.requesterEmail;
+  draft.requesterArea=data.area;
+  draft.evidenceHint=data.evidence && data.evidence!=="No tengo evidencia todavía"?data.evidence:"";
+  draft.category=draft.category||data.caseType||"Consulta general";
+  draft.priority=draft.priority||"Media";
+  draft.modality=draft.modality||"Mixta";
+  draft.title=typeof makeTitleFromText==="function"?makeTitleFromText(data.need,draft.category):(data.need||"Solicitud").slice(0,80);
+  draft.description=`Necesidad: ${data.need}
+
+Área o proceso: ${data.area}
+
+Tipo de solicitud: ${data.caseType}
+
+Evidencia disponible: ${data.evidence||"No se informó evidencia"}
+
+Resultado esperado: ${data.expected}
+
+Urgencia o plazo: ${data.urgency||"Sin urgencia indicada"}`;
+  draft.assignedTo=typeof suggestAssignee==="function"?suggestAssignee(draft.category,draft.priority,[draft.title,draft.description].join(" ")):(responders()[0]?.id||"");
+  return draft;
+}
+
+async function finalConfirmAndSendDraft(draft){
+  const assignedName=typeof userName==="function"?userName(draft.assignedTo):"Responsable asignado";
+  const result=await Swal.fire({
+    title:"Resumen de la solicitud",
+    width:760,
+    html:`<div class="wizard-summary" style="text-align:left">
+      <p><strong>Solicitante:</strong> ${escapeHtml(draft.requesterName)}</p>
+      <p><strong>Correo:</strong> ${escapeHtml(draft.requesterEmail)}</p>
+      <p><strong>Área:</strong> ${escapeHtml(draft.requesterArea)}</p>
+      <p><strong>Asunto:</strong> ${escapeHtml(draft.title)}</p>
+      <p><strong>Categoría:</strong> ${escapeHtml(draft.category)} · <strong>Prioridad:</strong> ${escapeHtml(draft.priority)}</p>
+      <p><strong>Responsable:</strong> ${escapeHtml(assignedName)}</p>
+      <hr>
+      <p style="white-space:pre-wrap">${escapeHtml(draft.description)}</p>
+      <p style="font-size:12px;color:#536379">El comprobante se enviará al correo digitado por el solicitante.</p>
+    </div>`,
+    showCancelButton:true,
+    confirmButtonText:"Enviar solicitud",
+    cancelButtonText:"Editar / cancelar",
+    confirmButtonColor:"#0d5bd2",
+    cancelButtonColor:"#6b7280",
+    allowOutsideClick:false
+  });
+  if(!result.isConfirmed)return false;
+  if(typeof createTicketDirectFromDraft==="function"){
+    await createTicketDirectFromDraft(draft,"IA guiada");
+    return true;
+  }
+  Swal.fire("No se pudo enviar","No se encontró la función de radicación directa.","error");
+  return false;
+}
+
+finalStartGuidedRequest=async function(fromOffer=false){
+  const data={};
+  data.requesterName=await finalAskStep({title:"Solicitante",text:"Escribe tu nombre completo.",placeholder:"Nombre completo"});
+  if(data.requesterName===null)return;
+  data.requesterEmail=await finalAskStep({title:"Correo de seguimiento",text:"Escribe el correo donde llegará el comprobante de la solicitud.",placeholder:"correo@empresa.com",type:"email"});
+  if(data.requesterEmail===null)return;
+  data.area=await finalAskStep({title:"Área o proceso",text:"¿De qué área o proceso viene la solicitud?",placeholder:"Ej. Logística, ventas, cartera"});
+  if(data.area===null)return;
+  data.need=await finalAskStep({title:"Necesidad",text:"Cuéntame qué necesitas o qué problema ocurrió.",input:"textarea",placeholder:"Describe la necesidad"});
+  if(data.need===null)return;
+  data.caseType=await finalAskStep({title:"Tipo de solicitud",text:"Selecciona el tipo que más se parece.",options:["Documento","Procedimiento","Auditoría","Indicador/KPI","Riesgo/Hallazgo","Capacitación","Mejora continua","Consulta general"],value:"Consulta general"});
+  if(data.caseType===null)return;
+  data.evidence=await finalAskStep({title:"Evidencia",text:"¿Tienes evidencia, enlace o soporte?",input:"textarea",placeholder:"Drive, PDF, imagen, acta o escribe: No tengo evidencia",required:false});
+  if(data.evidence===null)return;
+  if(!data.evidence)data.evidence="No se informó evidencia inicial";
+  data.expected=await finalAskStep({title:"Resultado esperado",text:"¿Qué esperas recibir del equipo de Calidad?",input:"textarea",placeholder:"Ej. Revisión, ajuste, orientación o respuesta trazable"});
+  if(data.expected===null)return;
+  data.urgency=await finalAskStep({title:"Urgencia",text:"¿Tiene fecha límite o prioridad especial?",placeholder:"Ej. Esta semana / Urgente / Sin urgencia",required:false});
+  if(data.urgency===null)return;
+  if(!data.urgency)data.urgency="Sin urgencia indicada";
+  const draft=finalBuildDraft(data);
+  await finalConfirmAndSendDraft(draft);
+};
+
+offerGuidedRadication=async function(){
+  const result=await Swal.fire({
+    title:"¿Quieres crear la solicitud con ayuda?",
+    html:`<div class="wizard-summary"><p>Te haré unas preguntas cortas y al final verás el resumen antes de enviar.</p></div>`,
+    icon:"question",
+    showDenyButton:true,
+    confirmButtonText:"Sí, crear con ayuda",
+    denyButtonText:"No, hacerlo manual",
+    confirmButtonColor:"#0d5bd2",
+    denyButtonColor:"#f7bf24",
+    allowOutsideClick:false
+  });
+  if(result.isConfirmed)await finalStartGuidedRequest(true);
+};
+
+maybeOfferGuidedRadication=function(){
+  if(state.view!=="create")return;
+  if(state.guidedOfferShown)return;
+  setTimeout(()=>{
+    if(state.view==="create"){
+      state.guidedOfferShown=true;
+      offerGuidedRadication();
+    }
+  },260);
+};
+
+if(typeof renderView==="function"){
+  const renderViewBeforeFinalGuided=renderView;
+  renderView=function(){
+    renderViewBeforeFinalGuided();
+    if(state.view==="create")setTimeout(maybeOfferGuidedRadication,160);
+  };
+}
+
+if(typeof setView==="function"){
+  const setViewBeforeFinalGuided=setView;
+  setView=function(v){
+    if(v==="create")state.guidedOfferShown=false;
+    return setViewBeforeFinalGuided(v);
+  };
+}
 
 window.addEventListener('DOMContentLoaded',async()=>{
   prepareIntroStart();
