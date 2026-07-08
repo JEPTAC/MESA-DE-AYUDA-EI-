@@ -3997,10 +3997,7 @@ body.visitor-mode .nav .icon{
   width:18px!important;
   font-size:14px!important;
 }
-body.visitor-mode .clean-user-actions,
-body.visitor-mode .clean-logout{
-  display:none!important;
-}
+
 body.visitor-mode .app-shell{
   grid-template-columns:205px minmax(0,1fr)!important;
 }
@@ -4018,6 +4015,84 @@ body.visitor-mode .app-shell{
 @media(max-width:880px){
   body.visitor-mode .app-shell{
     grid-template-columns:1fr!important;
+  }
+}
+
+
+/* =========================================================
+   VISITANTE: BOTÓN SALIR + TARJETAS MÁS ANCHAS Y COMPACTAS
+   ========================================================= */
+body.visitor-mode .sidebar{
+  padding:10px!important;
+  width:224px!important;
+}
+body.visitor-mode .app-shell{
+  grid-template-columns:224px minmax(0,1fr)!important;
+}
+body.visitor-mode .user-card{
+  padding:9px 10px!important;
+  border-radius:15px!important;
+  margin-bottom:10px!important;
+}
+body.visitor-mode .nav{
+  gap:8px!important;
+}
+body.visitor-mode .nav button{
+  min-height:74px!important;
+  height:74px!important;
+  padding:12px 12px!important;
+  border-radius:18px!important;
+  align-items:center!important;
+  justify-content:flex-start!important;
+  font-size:12.5px!important;
+  line-height:1.15!important;
+}
+body.visitor-mode .nav button .icon{
+  width:22px!important;
+  min-width:22px!important;
+  font-size:16px!important;
+}
+body.visitor-mode .nav button span:last-child{
+  display:-webkit-box!important;
+  -webkit-line-clamp:2!important;
+  -webkit-box-orient:vertical!important;
+  overflow:hidden!important;
+}
+body.visitor-mode .clean-user-actions{
+  display:flex!important;
+  margin-top:10px!important;
+}
+body.visitor-mode .clean-user-actions .clean-logout{
+  display:inline-flex!important;
+  width:100%!important;
+  min-height:40px!important;
+  justify-content:center!important;
+  align-items:center!important;
+  border-radius:14px!important;
+  font-size:12px!important;
+  font-weight:800!important;
+}
+@media(max-width:880px){
+  body.visitor-mode .sidebar{
+    width:100%!important;
+    padding:10px!important;
+  }
+  body.visitor-mode .user-card{
+    margin-bottom:8px!important;
+  }
+  body.visitor-mode .nav{
+    display:grid!important;
+    grid-template-columns:1fr!important;
+    gap:8px!important;
+  }
+  body.visitor-mode .nav button{
+    min-height:58px!important;
+    height:58px!important;
+    padding:10px 12px!important;
+    border-radius:16px!important;
+  }
+  body.visitor-mode .clean-user-actions{
+    margin-top:8px!important;
   }
 }
 
